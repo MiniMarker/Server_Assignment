@@ -1,45 +1,40 @@
 import java.io.*;
 import java.net.*;
 import java.util.Date;
-import java.util.Scanner;
+import java.util.Properties;
 
 public class Client {
 
-	private static final String host = "localhost";
-	private static final int portNumber = 4444;
-
-	private String userName;
-	private String serverHost;
-	private int serverPort;
-	private Scanner userInputScanner;
+	//Socket
+	private static String host; // = "localhost";
+	private static int portNumber; // = 4444;
 
 	public static void main(String[] args) {
-		Client client = new Client();
+		new Client();
 	}
 
 	private Client() {
+		readConfigFile();
+
 		try {
 			Socket socket = new Socket(host, portNumber);
+			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+			System.out.println("Sever connected on: " + host + "/" + portNumber + " at: " + new Date());
 
-			//Thread.sleep(1000); //wait for network com
+			// sending to server
+			PrintWriter printWriter = new PrintWriter(socket.getOutputStream(), true);
 
-			BufferedReader keyRead = new BufferedReader(new InputStreamReader(System.in));
-			// sending to client (pwrite object)
-			OutputStream ostream = socket.getOutputStream();
-			PrintWriter pwrite = new PrintWriter(ostream, true);
+			// receiving from server
+			BufferedReader receiveRead = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
-			// receiving from server ( receiveRead  object)
-			InputStream istream = socket.getInputStream();
-			BufferedReader receiveRead = new BufferedReader(new InputStreamReader(istream));
+			String receiveMessage;
+			String sendMessage;
 
-			System.out.println("Start the chitchat, type and press Enter key");
+			while(true) {
 
-			String receiveMessage, sendMessage;
-			while(true)
-			{
-				sendMessage = keyRead.readLine();  // keyboard reading
-				pwrite.println(sendMessage);       // sending to server
-				pwrite.flush();                    // flush the data
+				sendMessage = bufferedReader.readLine();  // keyboard reading
+				printWriter.println(sendMessage);       // sending to server
+				printWriter.flush();                    // flush the data
 				if((receiveMessage = receiveRead.readLine()) != null) //receive from server
 				{
 					System.out.println(receiveMessage); // displaying at DOS prompt
@@ -50,47 +45,26 @@ public class Client {
 		}
 	}
 
-	private void startClient(Scanner scanner) {
+	private void readConfigFile(){
+		Properties props = new Properties();
+		InputStream input = null;
 
-	}
+		try{
+			String filePath = "config.properties";
+			input = Client.class.getClassLoader().getResourceAsStream(filePath);
 
-	/*
-		try {
-
-			Socket socket = new Socket("localhost", 4444);
-
-			// working reading client-input
-			BufferedReader serverInput = new BufferedReader(new InputStreamReader(System.in));
-			OutputStream outputStream = socket.getOutputStream();
-			PrintWriter printWriter = new PrintWriter(outputStream, true);
-
-			// receiving from server-input
-			InputStream inputStream = socket.getInputStream();
-			BufferedReader receiveRead = new BufferedReader(new InputStreamReader(inputStream));
-
-			String receiveMessage;
-			String sendMessage;
-
-			System.out.println("You have connected the server on: " + new Date());
-
-			while(true)
-
-	{
-				//working
-				sendMessage = serverInput.readLine();
-				printWriter.println(sendMessage);
-				printWriter.flush();
-
-				if((receiveMessage = receiveRead.readLine()) != null) {
-					System.out.println(receiveMessage);
-				}
-
+			if (input == null){
+				System.out.println("Unable to read file at " + filePath);
+				return;
 			}
-		} catch (IOException exception) {
-			System.out.println("Error: " + exception);
+
+			props.load(input);
+
+			host = (props.getProperty("host"));
+			portNumber = Integer.parseInt(props.getProperty("portNumber"));
+
+		} catch (IOException ioex){
+			ioex.getMessage();
 		}
 	}
-	*/
-
-
 }

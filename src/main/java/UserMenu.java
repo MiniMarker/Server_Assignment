@@ -5,8 +5,8 @@ import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 public class UserMenu {
-	Scanner scanner = new Scanner(System.in);
-	String choice;
+	private Scanner scanner = new Scanner(System.in);
+	private String choice;
 
 	DBConnection dbConnection;
 	DBHandler dbHandler;
