@@ -5,9 +5,8 @@ import java.util.Properties;
 
 public class Client {
 
-	//Socket
-	private static String host; // = "localhost";
-	private static int portNumber; // = 4444;
+	private static String host;
+	private static int portNumber;
 
 	public static void main(String[] args) {
 		new Client();
@@ -16,28 +15,23 @@ public class Client {
 	private Client() {
 		readConfigFile();
 
-		try {
-			Socket socket = new Socket(host, portNumber);
-			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+		try (Socket socket = new Socket(host, portNumber);
+		     PrintWriter sendToServer = new PrintWriter(socket.getOutputStream(), true);
+		     BufferedReader serverOutput = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+		     BufferedReader clientInput = new BufferedReader(new InputStreamReader(System.in))) {
+
 			System.out.println("Sever connected on: " + host + "/" + portNumber + " at: " + new Date());
-
-			// sending to server
-			PrintWriter printWriter = new PrintWriter(socket.getOutputStream(), true);
-
-			// receiving from server
-			BufferedReader receiveRead = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-
-			String receiveMessage;
-			String sendMessage;
 
 			while(true) {
 
-				sendMessage = bufferedReader.readLine();  // keyboard reading
-				printWriter.println(sendMessage);       // sending to server
-				printWriter.flush();                    // flush the data
-				if((receiveMessage = receiveRead.readLine()) != null) //receive from server
-				{
-					System.out.println(receiveMessage); // displaying at DOS prompt
+				if (clientInput.ready()){
+					String input = clientInput.readLine();
+					sendToServer.println(input);
+				}
+
+				if (serverOutput.ready()){
+					String output = serverOutput.readLine();
+					System.out.println(output);
 				}
 			}
 		} catch (IOException ioex) {

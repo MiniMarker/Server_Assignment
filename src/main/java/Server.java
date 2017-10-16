@@ -14,15 +14,13 @@ public class Server {
 	}
 
 	private static int portNumber;
-
-	private int serverPort;
-	private List<ClientThread> clients = new ArrayList<ClientThread>();
+	private List<ClientThread> clients = new ArrayList<>();
 
 	public Server() {
 		readConfigFile();
 
-		try {
-			ServerSocket serverSocket = new ServerSocket(portNumber);
+		try (ServerSocket serverSocket = new ServerSocket(portNumber)) {
+
 			System.out.println("Server started on port: " + portNumber + " on: " + new Date());
 
 			while (true){
