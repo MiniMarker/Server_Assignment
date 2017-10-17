@@ -163,8 +163,8 @@ public class ClientThread implements Runnable {
 	private void printDataFromDatabase() throws IOException, Exception{
 		outputToClient.println("1: Print data fra tabellen 'subject'\n" +
 				"2: Print data fra tabellen 'teacher'\n" +
-				"3: Print all data fra begge tabellene\n" +
-				"4: Print ett subject fra emnekode\n" +
+				"3: Print ett subject fra emnekode\n" +
+				"4: Print all data fra begge tabellene\n" +
 				"9: Tilbake\n" +
 				"0: Avslutt serveren");
 
@@ -180,19 +180,19 @@ public class ClientThread implements Runnable {
 			case "2":
 				outputToClient.println("----------------- TEACHERS ------------------");
 				inputHandler = new InputHandler();
-				inputHandler.addTeacherDataFromFile();
+				inputHandler.printAllTeachers();
 				printDataFromDatabase();
 				break;
 			case "3":
 				outputToClient.println("----------- PRINTING ONE SUBJECT ------------");
 				inputHandler = new InputHandler();
-				inputHandler.printAllData();
+				inputHandler.printSingeSubject();
 				printDataFromDatabase();
 				break;
 			case "4":
 				outputToClient.println("------------- PRINTING ALL DATA -------------");
 				inputHandler = new InputHandler();
-				inputHandler.printSingeSubject();
+				inputHandler.printAllData();
 				printDataFromDatabase();
 				break;
 			case "9":

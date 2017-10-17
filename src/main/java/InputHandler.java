@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class InputHandler  {
@@ -12,6 +13,7 @@ public class InputHandler  {
 	private DBHandler dbHan;
 	private BufferedReader br;
 
+	ArrayList<String> list = new ArrayList<>();
 	private String line;
 	private String splitBy = ",";
 
@@ -31,7 +33,7 @@ public class InputHandler  {
 		try (Connection con = dbCon.ds.getConnection()) {
 
 			try {
-				br = new BufferedReader(new FileReader("subjects.csv"));
+				br = new BufferedReader(new FileReader("files/subjects.csv"));
 
 				PreparedStatement prepSubjectStmt = con.prepareStatement("INSERT INTO Subject VALUES (?,?,?,?)");
 
@@ -73,7 +75,7 @@ public class InputHandler  {
 		try (Connection con = dbCon.ds.getConnection()){
 
 			try {
-				br = new BufferedReader(new FileReader("teachers.csv"));
+				br = new BufferedReader(new FileReader("files/teachers.csv"));
 
 				PreparedStatement prepTeacherStmt = con.prepareStatement("INSERT INTO Teacher VALUES (?,?,?,?)");
 
@@ -122,7 +124,7 @@ public class InputHandler  {
 			ResultSet rs = prepSingeSubjectStmt.executeQuery();
 
 			while (rs.next()) {
-				clientThread.print(rs.getString(1) + " "
+				System.out.println(rs.getString(1) + " "
 						+ rs.getString(2) + " "
 						+ rs.getDouble(3) + " "
 						+ rs.getInt(4));
@@ -145,7 +147,7 @@ public class InputHandler  {
 					.executeQuery("SELECT * FROM Subject");
 
 			while (rs.next()){
-				clientThread.print("Emnekode: " + rs.getString(1) +
+				System.out.println("Emnekode: " + rs.getString(1) +
 						" Enmenavn: " + rs.getString(2) +
 						" Varighet: " + rs.getDouble(3) +
 						" Antall påmeldte: " + rs.getInt(4));
