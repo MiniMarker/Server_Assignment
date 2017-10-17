@@ -1,11 +1,10 @@
-package Database;
-
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.*;
+import java.util.Properties;
 
 public class DBConnection {
 
@@ -24,27 +23,32 @@ public class DBConnection {
 	int linesRead;
 
 	public DBConnection() {
-		fillDbCredentials();
+		readConfigFile();
 	}
 
-	public void fillDbCredentials(){
+	private void readConfigFile(){
+		Properties props = new Properties();
+		InputStream input = null;
 
 		try{
-			br = new BufferedReader(new FileReader("dbConnectionCredentials.csv"));
+			String filePath = "dbconfig.properties";
+			input = DBConnection.class.getClassLoader().getResourceAsStream(filePath);
 
-			while ((line = br.readLine()) != null) {
-				String[] strings = line.split(splitBy);
-
-				dbName = strings[0];
-				host = strings[1];
-				userName = strings[2];
-				password = strings[3];
-
-				linesRead++;
-				break;
+			if (input == null){
+				System.out.println("Unable to read file at " + filePath);
+				return;
 			}
+
+			props.load(input);
+
+			dbName = (props.getProperty("dbName"));
+			host = (props.getProperty("host"));
+			userName = (props.getProperty("username"));
+			password = (props.getProperty("password"));
+
+
 		} catch (IOException ioex){
-			System.out.println("ERROR! feil ved lesing av fil: " + ioex.getMessage());
+			ioex.getMessage();
 		}
 	}
 

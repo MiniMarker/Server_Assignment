@@ -1,7 +1,3 @@
-import Database.DBConnection;
-import Database.DBHandler;
-import Database.InputHandler;
-
 import java.io.*;
 import java.net.Socket;
 import java.util.Scanner;
@@ -35,7 +31,6 @@ public class ClientThread implements Runnable {
 
 				menu();
 
-				/*
 				if (clientInput.ready()) {
 					String clientMsg = clientInput.readLine();
 					System.out.println(clientMsg);
@@ -45,12 +40,21 @@ public class ClientThread implements Runnable {
 					String input = serverInput.readLine();
 					outputToClient.println(input);
 				}
-				*/
 			}
 		} catch (IOException ioex) {
 			ioex.getMessage();
 		} catch (Exception e){
 			e.getMessage();
+		}
+
+	}
+
+	public void print(String text){
+		try{
+			outputToClient = new PrintWriter(threadSocket.getOutputStream(), true);
+			outputToClient.println(text);
+		} catch (IOException ioex){
+			ioex.getMessage();
 		}
 
 	}
@@ -67,10 +71,11 @@ public class ClientThread implements Runnable {
 
 		switch (choice){
 			case "1":
-				outputToClient.println("Kobler til databasen");
-				serverInitMenu();
-				dbConnection.connect();
+				outputToClient.print("Kobler til databasen...");
+				dbConnection = new DBConnection();
 				dbConnection.setupCheck();
+				outputToClient.println("Vellykket");
+				serverInitMenu();
 				break;
 			case "0":
 				outputToClient.println("Serveren avsluttes...");
@@ -79,6 +84,7 @@ public class ClientThread implements Runnable {
 			default:
 				outputToClient.println("Feil svar! Prøv igjen...");
 				menu();
+				break;
 		}
 	}
 
@@ -92,14 +98,18 @@ public class ClientThread implements Runnable {
 
 		switch (choice){
 			case "1":
+				dbHandler = new DBHandler();
 				dbHandler.dropTablesIfExists();
-				outputToClient.println("Dropper tabeller...");
+				outputToClient.print("Dropper tabeller...");
+				outputToClient.println("Vellykket");
 				serverInitMenu();
 				break;
 			case "2":
-				outputToClient.println("Oppretter tabellene 'Student' og 'Teacher'");
+				//dbHandler = new DBHandler();
+				outputToClient.print("Oppretter tabellene 'Student' og 'Teacher'...");
 				dbHandler.createTables();
-				outputToClient.println("Oppretting vellykket!");
+				outputToClient.println("Vellykket!");
+
 				insertDataToTables();
 				break;
 			case "9":
@@ -112,11 +122,11 @@ public class ClientThread implements Runnable {
 			default:
 				outputToClient.println("Feil svar! Prøv igjen...");
 				serverInitMenu();
-
+				break;
 		}
 	}
 
-	private void insertDataToTables() throws IOException{
+	private void insertDataToTables() throws IOException, Exception{
 		outputToClient.println("1: Fyll inn tabellene med data fra fil \n" +
 				"9: Tilbake \n" +
 				"0: Avslutt serveren");
@@ -125,11 +135,76 @@ public class ClientThread implements Runnable {
 
 		switch (choice) {
 			case "1":
+				outputToClient.print("Oppretter 'subject' table...'");
+				inputHandler = new InputHandler();
 				inputHandler.addSubjectDataFromFile();
+				outputToClient.println("Vellykket");
+
+				outputToClient.print("Oppretter 'teacher' table...'");
+				inputHandler = new InputHandler();
 				inputHandler.addTeacherDataFromFile();
+				outputToClient.println("Vellykket");
+				printDataFromDatabase();
+				break;
+			case "9":
+				outputToClient.println("Går tilbake...");
+				serverInitMenu();
 				break;
 			case "0":
 				flag = false;
+				break;
+			default:
+				outputToClient.println("Feil svar! Prøv igjen...");
+				insertDataToTables();
+				break;
+		}
+	}
+
+	private void printDataFromDatabase() throws IOException, Exception{
+		outputToClient.println("1: Print data fra tabellen 'subject'\n" +
+				"2: Print data fra tabellen 'teacher'\n" +
+				"3: Print all data fra begge tabellene\n" +
+				"4: Print ett subject fra emnekode\n" +
+				"9: Tilbake\n" +
+				"0: Avslutt serveren");
+
+		choice = clientInput.readLine();
+
+		switch (choice){
+			case "1":
+				outputToClient.println("----------------- SUBJECTS ------------------");
+				inputHandler = new InputHandler();
+				inputHandler.printAllSubjects();
+				printDataFromDatabase();
+				break;
+			case "2":
+				outputToClient.println("----------------- TEACHERS ------------------");
+				inputHandler = new InputHandler();
+				inputHandler.addTeacherDataFromFile();
+				printDataFromDatabase();
+				break;
+			case "3":
+				outputToClient.println("----------- PRINTING ONE SUBJECT ------------");
+				inputHandler = new InputHandler();
+				inputHandler.printAllData();
+				printDataFromDatabase();
+				break;
+			case "4":
+				outputToClient.println("------------- PRINTING ALL DATA -------------");
+				inputHandler = new InputHandler();
+				inputHandler.printSingeSubject();
+				printDataFromDatabase();
+				break;
+			case "9":
+				outputToClient.println("Går tilbake...");
+				insertDataToTables();
+				break;
+			case "0":
+				flag = false;
+				break;
+			default:
+				outputToClient.println("Feil svar! Prøv igjen...");
+				printDataFromDatabase();
 				break;
 		}
 	}

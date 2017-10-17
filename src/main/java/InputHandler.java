@@ -1,15 +1,17 @@
-package Database;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.*;
+import java.util.Scanner;
 
 public class InputHandler  {
 
+	private ClientThread clientThread;
+	private Scanner scanner = new Scanner(System.in);
 	private DBConnection dbCon;
 	private DBHandler dbHan;
 	private BufferedReader br;
+
 	private String line;
 	private String splitBy = ",";
 
@@ -107,18 +109,20 @@ public class InputHandler  {
 	/**
 	 * Print one subject defined by subject.code
 	 */
-	public void printSingeSubject(String code) {
-
+	public void printSingeSubject() {
 		try (Connection con = dbCon.ds.getConnection()) {
 
 			PreparedStatement prepSingeSubjectStmt = con.prepareStatement("SELECT * FROM Subject WHERE code = ?");
+
+			System.out.print("Enter subject code: ");
+			String code = scanner.nextLine();
 
 			prepSingeSubjectStmt.setString(1, code);
 
 			ResultSet rs = prepSingeSubjectStmt.executeQuery();
 
 			while (rs.next()) {
-				System.out.println(rs.getString(1) + " "
+				clientThread.print(rs.getString(1) + " "
 						+ rs.getString(2) + " "
 						+ rs.getDouble(3) + " "
 						+ rs.getInt(4));
@@ -141,7 +145,7 @@ public class InputHandler  {
 					.executeQuery("SELECT * FROM Subject");
 
 			while (rs.next()){
-				System.out.println("Emnekode: " + rs.getString(1) +
+				clientThread.print("Emnekode: " + rs.getString(1) +
 						" Enmenavn: " + rs.getString(2) +
 						" Varighet: " + rs.getDouble(3) +
 						" Antall påmeldte: " + rs.getInt(4));
@@ -164,7 +168,7 @@ public class InputHandler  {
 					.executeQuery("SELECT * FROM Teacher");
 
 			while (rs.next()){
-				System.out.println("Lærerid: " + rs.getInt(1) + " Navn: " + rs.getString(2) + " Ikke ledig: " + rs.getString(3) + " Kontaktinfo: " + rs.getString(4));
+				clientThread.print("Lærerid: " + rs.getInt(1) + " Navn: " + rs.getString(2) + " Ikke ledig: " + rs.getString(3) + " Kontaktinfo: " + rs.getString(4));
 			}
 		} catch (SQLException sqle){
 			System.out.println("SQL ERROR! " + sqle.getMessage());
