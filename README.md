@@ -26,7 +26,7 @@ For å få få løsningen til å fungere må du først kjøre klassen **'Server'
 Deretter kan du koble til så mange klienter du bare vil ved å kjøre klassen **'Client'** sin main-metode
 
 
-#### Enjoy
+### Enjoy
 
 
 **Built With:**
@@ -35,3 +35,4 @@ Deretter kan du koble til så mange klienter du bare vil ved å kjøre klassen *
 + [Maven - Dependency håndtering og prosjekt format.](https://maven.apache.org)
 + [Java - Språk](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 + [MySQL Workbench - Databasebehandling og språk](http://mysqlworkbench.org)
++ [GitHub](https://github.com/MiniMarker/Server_Innlevering)

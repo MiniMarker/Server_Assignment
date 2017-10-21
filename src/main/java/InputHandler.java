@@ -3,24 +3,17 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Scanner;
 
-public class InputHandler  {
+public class InputHandler {
 
-	private ClientThread clientThread;
-	private Scanner scanner = new Scanner(System.in);
 	private DBConnection dbCon;
-	private DBHandler dbHan;
-	private BufferedReader br;
-
 	private ArrayList<String> list = new ArrayList<>();
-	private String line;
-	private String splitBy = ",";
 	private String text = "";
+	private String result;
 
 	public InputHandler() {
 		dbCon = new DBConnection();
-		dbHan = new DBHandler();
+		//DBHandler dbHan = new DBHandler();
 
 		dbCon.connect();
 	}
@@ -34,11 +27,13 @@ public class InputHandler  {
 		try (Connection con = dbCon.ds.getConnection()) {
 
 			try {
-				br = new BufferedReader(new FileReader("files/subjects.csv"));
+				BufferedReader br = new BufferedReader(new FileReader("files/subjects.csv"));
 
 				PreparedStatement prepSubjectStmt = con.prepareStatement("INSERT INTO Subject VALUES (?,?,?,?)");
 
 				int count = 0;
+				String line;
+				String splitBy = ",";
 
 				while ((line = br.readLine()) != null) {
 
@@ -57,12 +52,12 @@ public class InputHandler  {
 
 				text = (count + " Rows created in table 'Subject'");
 
-			} catch (SQLException sqle){
+			} catch (SQLException sqle) {
 				System.out.println("SQL ERROR! " + sqle.getMessage());
-			} catch (IOException ioex){
+			} catch (IOException ioex) {
 				System.out.println("IO ERROR! " + ioex.getMessage());
 			}
-		} catch (SQLException sqle2){
+		} catch (SQLException sqle2) {
 			System.out.println("SQL ERROR! " + sqle2.getMessage());
 		}
 		return text;
@@ -96,35 +91,27 @@ public class InputHandler  {
 	/**
 	 * Print all subjects in database
 	 */
-
-
-	//TODO fix this!!!!!!!!!!!!
-	public ArrayList<String> printAllSubjects() {
+	public String printAllSubjects() {
 
 		try (Connection con = dbCon.ds.getConnection();
 		     Statement stmt = con.createStatement()) {
 
-			ResultSet rs = stmt
-					.executeQuery("SELECT * FROM Subject");
+			ResultSet rs = stmt.executeQuery("SELECT * FROM Subject");
 
-			while (rs.next()){
-				list.add("Emnekode: " + rs.getString(1) +
+			StringBuilder stringBuilder = new StringBuilder();
+
+			while (rs.next()) {
+				stringBuilder.append("Emnekode: " + rs.getString(1) +
 						" Enmenavn: " + rs.getString(2) +
 						" Varighet: " + rs.getDouble(3) +
 						" Antall påmeldte: " + rs.getInt(4) + "\n");
 			}
+
+			result = stringBuilder.toString();
+
 		} catch (SQLException sqle) {
 			System.out.println("SQL ERROR! " + sqle.getMessage());
 		}
-
-		return list;
-	}
-
-	/**
-	 * Test methods
-	 */
-
-	public DBConnection getDbCon() {
-		return dbCon;
+		return result;
 	}
 }

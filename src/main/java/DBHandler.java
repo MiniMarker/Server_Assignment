@@ -41,12 +41,4 @@ public class DBHandler {
 		}
 		return text;
 	}
-
-	/**
-	 * Test methods
-	 */
-
-	public DBConnection getDbCon() {
-		return dbCon;
-	}
 }
