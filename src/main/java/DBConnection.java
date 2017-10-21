@@ -1,6 +1,5 @@
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.*;
@@ -9,18 +8,10 @@ import java.util.Properties;
 public class DBConnection {
 
 	MysqlDataSource ds;
-	BufferedReader br;
-
-	private String line;
-	private String splitBy = ",";
-
 	private String dbName;
 	private String host;
 	private String userName;
 	private String password;
-
-	private boolean connectTest;
-	int linesRead;
 
 	public DBConnection() {
 		readConfigFile();
@@ -28,10 +19,10 @@ public class DBConnection {
 
 	private void readConfigFile(){
 		Properties props = new Properties();
-		InputStream input = null;
+		InputStream input;
 
 		try{
-			String filePath = "dbconfig.properties";
+			String filePath = "dbConfig.properties";
 			input = DBConnection.class.getClassLoader().getResourceAsStream(filePath);
 
 			if (input == null){

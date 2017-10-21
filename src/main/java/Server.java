@@ -41,7 +41,7 @@ public class Server {
 		InputStream input = null;
 
 		try{
-			String filePath = "config.properties";
+			String filePath = "serverConfig.properties";
 			input = Server.class.getClassLoader().getResourceAsStream(filePath);
 
 			if (input == null){
