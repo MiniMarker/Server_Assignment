@@ -47,8 +47,8 @@ public class DBConnection {
 		ds = new MysqlDataSource();
 		ds.setDatabaseName(dbName);
 		ds.setServerName(host);
-		ds.setUser(userName); //root
-		ds.setPassword(password); //pass
+		ds.setUser(userName);
+		ds.setPassword(password);
 	}
 
 	public void setupCheck() {
@@ -78,7 +78,7 @@ public class DBConnection {
 					stmt.close();
 				}
 			} catch (SQLException sqle2) {
-				sqle2.printStackTrace();
+				//empty
 			}
 		}
 	}

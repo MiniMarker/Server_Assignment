@@ -42,9 +42,22 @@ public class ClientThread implements Runnable {
 			}
 		} catch (Exception e){
 			e.getMessage();
+		} finally {
+
+			outputToClient.close();
+
+			if (clientInput != null){
+				try {
+					clientInput.close();
+				} catch (IOException ioex){
+					//Tom med vilje
+				}
+			}
+
 		}
 	}
 
+	//region UserMenu
 	private void startMenu() {
 
 		outputToClient.println("Velkommen til serveren! \n" +
@@ -237,4 +250,5 @@ public class ClientThread implements Runnable {
 			System.out.println("Feil ved lesing av input: " + ioex.getMessage());
 		}
 	}
+	//endregion
 }

@@ -1,5 +1,4 @@
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.*;
@@ -8,7 +7,7 @@ public class DBHandler {
 
 	private DBConnection dbCon;
 	private String text;
-	private String filepath;
+	private String sqlQuery;
 
 
 	public DBHandler() {
@@ -32,11 +31,24 @@ public class DBHandler {
 		try (Connection con = dbCon.ds.getConnection();
 		     Statement stmt = con.createStatement()) {
 
-			filepath = "files/createSubjectTableSql.txt";
+			String readSqlFileString = readSqlFile("files/createSubjectTableSql.txt");
+
+			stmt.executeUpdate(readSqlFileString);
+
+			text = ("Subject table created...");
+
+		} catch (SQLException sqle){
+			System.out.println("SQL ERROR! " + sqle.getMessage());
+		}
+		return text;
+	}
+
+	private String readSqlFile(String filepath){
+
+		try {
 			BufferedReader sqlFileReader = new BufferedReader(new FileReader(filepath));
 
 			StringBuilder stringBuilder = new StringBuilder();
-
 			String line = sqlFileReader.readLine();
 
 			while (line != null) {
@@ -44,19 +56,11 @@ public class DBHandler {
 				line = sqlFileReader.readLine();
 			}
 
-			String sqlQuery = stringBuilder.toString();
+			sqlQuery = stringBuilder.toString();
 
-			stmt.executeUpdate(sqlQuery);
-
-			text = ("Subject table created...");
-
-		} catch (SQLException sqle){
-			System.out.println("SQL ERROR! " + sqle.getMessage());
-		} catch (FileNotFoundException fnfex){
-			System.out.println("Could not find file on: " + filepath);
 		} catch (IOException ioex){
-			System.out.println(ioex.getMessage());
+			ioex.getMessage();
 		}
-		return text;
+		return sqlQuery;
 	}
 }

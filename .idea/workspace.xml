@@ -2,9 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdd841e3-84ae-4017-864c-45068b89273c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/files/createSubjectTableSql.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/DBHandler.class" afterPath="$PROJECT_DIR$/target/classes/DBHandler.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/InputHandler.class" afterPath="$PROJECT_DIR$/target/classes/InputHandler.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ClientThread.java" afterPath="$PROJECT_DIR$/src/main/java/ClientThread.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/DBConnection.java" afterPath="$PROJECT_DIR$/src/main/java/DBConnection.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/DBHandler.java" afterPath="$PROJECT_DIR$/src/main/java/DBHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Server.java" afterPath="$PROJECT_DIR$/src/main/java/Server.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -50,37 +54,27 @@
       <file leaf-file-name="InputHandler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/InputHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="29" column="89" lean-forward="false" selection-start-line="29" selection-start-column="71" selection-end-line="29" selection-end-column="89" />
+            <state relative-caret-position="1395">
+              <caret line="93" column="39" lean-forward="false" selection-start-line="93" selection-start-column="39" selection-end-line="93" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1508589740013" expanded="true" signature="716:752" ph="INSERT INTO Subject... " />
-                <marker date="1508589740013" expanded="true" signature="1812:1848" ph="SELECT * FRO... Subject" />
-                <marker date="1508589740013" expanded="true" signature="2432:2453" ph="SELECT * FRO... Subject" />
+                <marker date="1508591249721" expanded="true" signature="676:712" ph="INSERT INTO Subject... " />
+                <marker date="1508591249721" expanded="true" signature="1772:1808" ph="SELECT * FRO... Subject" />
+                <marker date="1508591249721" expanded="true" signature="2392:2413" ph="SELECT * FRO... Subject" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DBHandler.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DBHandler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/DBHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
-              <caret line="48" column="39" lean-forward="false" selection-start-line="48" selection-start-column="39" selection-end-line="48" selection-end-column="39" />
+            <state relative-caret-position="182">
+              <caret line="18" column="37" lean-forward="false" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1508591177719" expanded="true" signature="483:511" ph="DROP TABLE I... " />
+                <marker date="1508595621723" expanded="true" signature="445:473" ph="DROP TABLE I... " />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="createSubjectTableSql.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/files/createSubjectTableSql.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="2" lean-forward="false" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="2" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -88,26 +82,33 @@
       <file leaf-file-name="ClientThread.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ClientThread.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2265">
-              <caret line="153" column="54" lean-forward="false" selection-start-line="153" selection-start-column="54" selection-end-line="153" selection-end-column="54" />
+            <state relative-caret-position="90">
+              <caret line="6" column="32" lean-forward="false" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#355#356#0" expanded="true" />
+                <element signature="e#383#384#0" expanded="true" />
+                <element signature="method#startMenu#0;class#ClientThread#0" expanded="false" />
+                <element signature="method#serverInitMenu#0;class#ClientThread#0" expanded="false" />
+                <element signature="method#insertDataToTables#0;class#ClientThread#0" expanded="false" />
+                <element signature="method#printDataFromDatabaseMenu#0;class#ClientThread#0" expanded="false" />
+                <marker date="1508599252674" expanded="true" signature="387:1251" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DBConnection.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DBConnection.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/DBConnection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+            <state relative-caret-position="630">
+              <caret line="42" column="9" lean-forward="false" selection-start-line="42" selection-start-column="9" selection-end-line="42" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#332#333#0" expanded="true" />
                 <element signature="e#355#356#0" expanded="true" />
-                <marker date="1508585214886" expanded="true" signature="1554:1576" ph="DROP SCHEMA " />
-                <marker date="1508585214886" expanded="true" signature="1612:1626" ph="CREATE SCHEM... missingValue" />
+                <marker date="1508600419531" expanded="true" signature="1540:1562" ph="DROP SCHEMA " />
+                <marker date="1508600419531" expanded="true" signature="1598:1612" ph="CREATE SCHEM... missingValue" />
               </folding>
             </state>
           </provider>
@@ -116,21 +117,13 @@
       <file leaf-file-name="Server.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Server.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="615">
-              <caret line="43" column="41" lean-forward="false" selection-start-line="43" selection-start-column="41" selection-end-line="43" selection-end-column="41" />
+            <state relative-caret-position="855">
+              <caret line="59" column="21" lean-forward="true" selection-start-line="59" selection-start-column="21" selection-end-line="59" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1484#1485#0" expanded="true" />
+                <element signature="e#1505#1506#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="serverConfig.properties" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/serverConfig.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="15" lean-forward="false" selection-start-line="1" selection-start-column="15" selection-end-line="1" selection-end-column="15" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -166,20 +159,20 @@
         <option value="$PROJECT_DIR$/src/main/java/ServerThread.java" />
         <option value="$PROJECT_DIR$/src/main/resources/clientConfig.properties" />
         <option value="$PROJECT_DIR$/src/main/resources/serverConfig.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/Server.java" />
         <option value="$PROJECT_DIR$/src/main/java/Client.java" />
         <option value="$PROJECT_DIR$/src/main/resources/dbconfig.properties" />
         <option value="$PROJECT_DIR$/src/main/java/Database/DBConnection.java" />
         <option value="$PROJECT_DIR$/src/main/java/Database/InputHandler.java" />
         <option value="$APPLICATION_CONFIG_DIR$/idea.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/UserMenu.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ClientThread.java" />
-        <option value="$PROJECT_DIR$/src/main/java/DBConnection.java" />
         <option value="$PROJECT_DIR$/README2.md" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/src/main/java/InputHandler.java" />
         <option value="$PROJECT_DIR$/files/createSubjectTableSql.txt" />
+        <option value="$PROJECT_DIR$/src/main/java/InputHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/DBHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/UserMenu.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ClientThread.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Server.java" />
+        <option value="$PROJECT_DIR$/src/main/java/DBConnection.java" />
       </list>
     </option>
   </component>
@@ -240,11 +233,6 @@
             <path>
               <item name="WesterdalsServer" type="b2602c69:ProjectViewProjectNode" />
               <item name="innlevering2" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="WesterdalsServer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="innlevering2" type="462c0819:PsiDirectoryNode" />
-              <item name="files" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="WesterdalsServer" type="b2602c69:ProjectViewProjectNode" />
@@ -826,12 +814,12 @@
       <workItem from="1508325506023" duration="3994000" />
       <workItem from="1508330269944" duration="1333000" />
       <workItem from="1508582118007" duration="6596000" />
-      <workItem from="1508590623463" duration="554000" />
+      <workItem from="1508590623463" duration="3765000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="82104000" />
+    <option name="totallyTimeSpent" value="85315000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -855,7 +843,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32468995" sideWeight="0.502442" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1953602" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919955" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32468995" sideWeight="0.497558" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32468995" sideWeight="0.497558" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919955" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -942,7 +930,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="15" />
+      <option name="time" value="20" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -957,6 +945,13 @@
           <caret line="34" column="32" lean-forward="true" selection-start-line="34" selection-start-column="32" selection-end-line="34" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#355#356#0" expanded="true" />
+            <element signature="e#383#384#0" expanded="true" />
+            <element signature="method#startMenu#0;class#ClientThread#0" expanded="false" />
+            <element signature="method#serverInitMenu#0;class#ClientThread#0" expanded="false" />
+            <element signature="method#insertDataToTables#0;class#ClientThread#0" expanded="false" />
+            <element signature="method#printDataFromDatabaseMenu#0;class#ClientThread#0" expanded="false" />
+            <marker date="1508599252674" expanded="true" signature="387:1251" ph="..." />
           </folding>
         </state>
       </provider>
@@ -989,6 +984,8 @@
           <caret line="20" column="18" lean-forward="false" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1484#1485#0" expanded="true" />
+            <element signature="e#1505#1506#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1021,6 +1018,13 @@
           <caret line="27" column="45" lean-forward="false" selection-start-line="27" selection-start-column="45" selection-end-line="27" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#355#356#0" expanded="true" />
+            <element signature="e#383#384#0" expanded="true" />
+            <element signature="method#startMenu#0;class#ClientThread#0" expanded="false" />
+            <element signature="method#serverInitMenu#0;class#ClientThread#0" expanded="false" />
+            <element signature="method#insertDataToTables#0;class#ClientThread#0" expanded="false" />
+            <element signature="method#printDataFromDatabaseMenu#0;class#ClientThread#0" expanded="false" />
+            <marker date="1508599252674" expanded="true" signature="387:1251" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1038,6 +1042,8 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1484#1485#0" expanded="true" />
+            <element signature="e#1505#1506#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1254,7 +1260,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/UserMenu.java" />
     <entry file="file://$PROJECT_DIR$/src/main/resources/dbConfig.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
@@ -1283,53 +1288,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Server.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="43" column="41" lean-forward="false" selection-start-line="43" selection-start-column="41" selection-end-line="43" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/DBConnection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#332#333#0" expanded="true" />
-            <element signature="e#355#356#0" expanded="true" />
-            <marker date="1508585214886" expanded="true" signature="1554:1576" ph="DROP SCHEMA " />
-            <marker date="1508585214886" expanded="true" signature="1612:1626" ph="CREATE SCHEM... missingValue" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ClientThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2265">
-          <caret line="153" column="54" lean-forward="false" selection-start-line="153" selection-start-column="54" selection-end-line="153" selection-end-column="54" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/InputHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="29" column="89" lean-forward="false" selection-start-line="29" selection-start-column="71" selection-end-line="29" selection-end-column="89" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1508589740013" expanded="true" signature="716:752" ph="INSERT INTO Subject... " />
-            <marker date="1508589740013" expanded="true" signature="1812:1848" ph="SELECT * FRO... Subject" />
-            <marker date="1508589740013" expanded="true" signature="2432:2453" ph="SELECT * FRO... Subject" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="das://table:/435042aa/95d2e3ff-f14c-43ff-b087-c2628ce2787e/TimetableWesterdals.Subject">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -1345,13 +1303,77 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/DBHandler.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/UserMenu.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="48" column="39" lean-forward="false" selection-start-line="48" selection-start-column="39" selection-end-line="48" selection-end-column="39" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/InputHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1395">
+          <caret line="93" column="39" lean-forward="false" selection-start-line="93" selection-start-column="39" selection-end-line="93" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1508591177719" expanded="true" signature="483:511" ph="DROP TABLE I... " />
+            <marker date="1508591249721" expanded="true" signature="676:712" ph="INSERT INTO Subject... " />
+            <marker date="1508591249721" expanded="true" signature="1772:1808" ph="SELECT * FRO... Subject" />
+            <marker date="1508591249721" expanded="true" signature="2392:2413" ph="SELECT * FRO... Subject" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/DBHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="18" column="37" lean-forward="false" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1508595621723" expanded="true" signature="445:473" ph="DROP TABLE I... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ClientThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="32" lean-forward="false" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#355#356#0" expanded="true" />
+            <element signature="e#383#384#0" expanded="true" />
+            <element signature="method#startMenu#0;class#ClientThread#0" expanded="false" />
+            <element signature="method#serverInitMenu#0;class#ClientThread#0" expanded="false" />
+            <element signature="method#insertDataToTables#0;class#ClientThread#0" expanded="false" />
+            <element signature="method#printDataFromDatabaseMenu#0;class#ClientThread#0" expanded="false" />
+            <marker date="1508599252674" expanded="true" signature="387:1251" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Server.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="855">
+          <caret line="59" column="21" lean-forward="true" selection-start-line="59" selection-start-column="21" selection-end-line="59" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1484#1485#0" expanded="true" />
+            <element signature="e#1505#1506#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/DBConnection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="42" column="9" lean-forward="false" selection-start-line="42" selection-start-column="9" selection-end-line="42" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#332#333#0" expanded="true" />
+            <element signature="e#355#356#0" expanded="true" />
+            <marker date="1508600419531" expanded="true" signature="1540:1562" ph="DROP SCHEMA " />
+            <marker date="1508600419531" expanded="true" signature="1598:1612" ph="CREATE SCHEM... missingValue" />
           </folding>
         </state>
       </provider>

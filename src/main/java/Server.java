@@ -55,6 +55,15 @@ public class Server {
 
 		} catch (IOException ioex){
 			ioex.getMessage();
+		} finally {
+			if (input != null){
+				try {
+					input.close();
+				} catch (IOException ioex){
+					//tom
+				}
+			}
+
 		}
 	}
 
