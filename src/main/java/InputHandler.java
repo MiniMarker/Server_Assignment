@@ -13,8 +13,6 @@ public class InputHandler {
 
 	public InputHandler() {
 		dbCon = new DBConnection();
-		//DBHandler dbHan = new DBHandler();
-
 		dbCon.connect();
 	}
 
