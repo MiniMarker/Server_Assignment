@@ -17,6 +17,12 @@ public class ClientThread implements Runnable {
 		threadSocket = socket;
 	}
 
+	/**
+	 * This method will run every time a new client is connected,
+	 * it uses a PrintWriter to read incoming text sent from the server, in this case the menus
+	 * and a BufferedReader to read the clients text, in this case answers to the menus the server provides.
+	 * the while loop uses a flag that will turn to fale if the client options to exit the menus.
+	 */
 	public void run() {
 		try(BufferedReader serverInput = new BufferedReader(new InputStreamReader(System.in))) {
 
@@ -55,6 +61,11 @@ public class ClientThread implements Runnable {
 	}
 
 	//region UserMenu
+
+	/**
+	 * Welcome text and initialization of the database.
+	 * All of the menus is written in norwegian
+	 */
 	private void startMenu() {
 
 		outputToClient.println("Velkommen til serveren! \n" +
@@ -95,6 +106,9 @@ public class ClientThread implements Runnable {
 
 	}
 
+	/**
+	 * database table creation/deletion
+	 */
 	private void serverInitMenu() {
 		outputToClient.println("1: Drop tabellen 'subject' hvis den eksisterer \n" +
 				"2: Opprett tabeller \n" +
@@ -147,6 +161,9 @@ public class ClientThread implements Runnable {
 		}
 	}
 
+	/**
+	 * populate the tables
+	 */
 	private void insertDataToTables() {
 		outputToClient.println("1: Fyll inn tabellen med data fra fil \n" +
 				"9: Tilbake \n" +
@@ -189,6 +206,9 @@ public class ClientThread implements Runnable {
 		}
 	}
 
+	/**
+	 * print data from the table, either by entering a specific subject code or print all the rows in the table.
+	 */
 	private void printDataFromDatabaseMenu() {
 		outputToClient.println("1: Print data fra tabellen 'subject'\n" +
 				"2: Print ett subject fra emnekode\n" +

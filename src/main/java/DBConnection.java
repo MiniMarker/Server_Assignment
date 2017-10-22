@@ -17,6 +17,9 @@ public class DBConnection {
 		readConfigFile();
 	}
 
+	/**
+	 * reads the propertyfile and setting the fields to its data for further use.
+	 */
 	private void readConfigFile(){
 		Properties props = new Properties();
 		InputStream input;
@@ -42,6 +45,9 @@ public class DBConnection {
 		}
 	}
 
+	/**
+	 * establishes a new MySqlDataSource bu using the properties of the fields
+	 */
 	public void connect(){
 		ds = new MysqlDataSource();
 		ds.setDatabaseName(dbName);
@@ -50,6 +56,9 @@ public class DBConnection {
 		ds.setPassword(password);
 	}
 
+	/**
+	 * does a setup check that connects to the mySQL server and creates the schema
+	 */
 	public void setupCheck() {
 		Connection con;
 		Statement stmt = null;

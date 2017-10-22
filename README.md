@@ -3,7 +3,10 @@
 I denne oppgaven tar jeg i bruk en flertrådet serverløsning som skal fungere som en meny for klienter som kan opprette og 
 fylle inn data i en databasetabell fra filen: 'subjects.csv' som er lagret i prosjektmappen.
 
-Dette README doukumentet inneholder instrukser som trengs form å få løsningen til å kjøre på din maskin.
+Denne koden er en videreutvilking av koden i prosjektet ['WesterdalsTimetable'](https://github.com/MiniMarker/WesterdalsTimetable), 
+hvor jeg her har forenklet databasen til kun å håndtere en enkelt tabell isteden for flere.
+
+Dette README doukumentet inneholder instrukser som trengs for å få løsningen til å kjøre på din maskin.
 
 **— Properties**
 

@@ -16,15 +16,14 @@ public class InputHandler {
 
 	/**
 	 * Add data to Subject table form file
+	 * @return returns numbers of rows created
 	 */
 	public String addSubjectDataFromFile() {
 
 		try (Connection con = dbCon.ds.getConnection()) {
 
-			try {
-				BufferedReader br = new BufferedReader(new FileReader("files/subjects.csv"));
-
-				PreparedStatement prepSubjectStmt = con.prepareStatement("INSERT INTO Subject VALUES (?,?,?,?)");
+			try (BufferedReader br = new BufferedReader(new FileReader("files/subjects.csv"));
+			     PreparedStatement prepSubjectStmt = con.prepareStatement("INSERT INTO Subject VALUES (?,?,?,?)")) {
 
 				int count = 0;
 				String line;
@@ -41,7 +40,6 @@ public class InputHandler {
 					prepSubjectStmt.setInt(4, Integer.parseInt(subjects[3]));
 
 					prepSubjectStmt.executeUpdate();
-
 					count++;
 				}
 
@@ -60,11 +58,11 @@ public class InputHandler {
 
 	/**
 	 * Print one subject defined by subject.code
+	 * @return one ResultSet defined by a query based on subject.code
 	 */
 	public String printSingleSubject(String code) {
-		try (Connection con = dbCon.ds.getConnection()) {
-
-			PreparedStatement prepSingeSubjectStmt = con.prepareStatement("SELECT * FROM Subject WHERE code = ?");
+		try (Connection con = dbCon.ds.getConnection();
+		     PreparedStatement prepSingeSubjectStmt = con.prepareStatement("SELECT * FROM Subject WHERE code = ?")) {
 
 			prepSingeSubjectStmt.setString(1, code);
 
@@ -85,6 +83,7 @@ public class InputHandler {
 
 	/**
 	 * Print all subjects in database
+	 * @return Strings of all rows in the db-table built by using a StringBuilder
 	 */
 	public String printAllSubjects() {
 

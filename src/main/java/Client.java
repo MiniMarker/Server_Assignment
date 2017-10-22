@@ -12,6 +12,10 @@ public class Client {
 		new Client();
 	}
 
+	/**
+	 * Creates a client that connects to the server by the host and the portnumber set in the property file to
+	 * communicate with the server.
+	 */
 	private Client() {
 		readConfigFile();
 
@@ -39,6 +43,9 @@ public class Client {
 		}
 	}
 
+	/**
+	 * reads the propertyfile and setting the fields to its data for further use.
+	 */
 	private void readConfigFile(){
 		Properties props = new Properties();
 		InputStream input = null;

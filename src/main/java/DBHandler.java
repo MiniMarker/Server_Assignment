@@ -15,6 +15,9 @@ public class DBHandler {
 		dbCon.connect();
 	}
 
+	/**
+	 * Runs a query that drops the table if it exists.
+	 */
 	public void dropTablesIfExists() {
 		try (Connection con = dbCon.ds.getConnection();
 		     Statement stmt = con.createStatement()) {
@@ -26,12 +29,16 @@ public class DBHandler {
 		}
 	}
 
+	/**
+	 * this method uses readSqlFile(String filepath) to run a query that creates the table.
+	 * @return a confirmation text
+	 */
 	public String createSubjectTable() {
 
 		try (Connection con = dbCon.ds.getConnection();
 		     Statement stmt = con.createStatement()) {
 
-			stmt.executeUpdate(readSqlFile("files/createSubjectTableSql.txt"));
+			stmt.executeUpdate(readSqlFile("files/createSubjectTableSql.sql"));
 
 			text = ("Subject table created...");
 
@@ -41,6 +48,11 @@ public class DBHandler {
 		return text;
 	}
 
+	/**
+	 * This method reads text from a file and returns it as a string.
+	 * @param filepath the absolute file path to the .txt file.
+	 * @return a string of the file by using a StringBuilder, in this intance a SQL-string.
+	 */
 	private String readSqlFile(String filepath){
 
 		try {

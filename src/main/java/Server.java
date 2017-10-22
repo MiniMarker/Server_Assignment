@@ -16,6 +16,10 @@ public class Server {
 		new Server();
 	}
 
+	/**
+	 * constructor that starts the server on portnumber set in the property file and accepts incoming clients
+	 * The clients is connected to the server by starting new thread for each new client that is connected
+	 */
 	public Server() {
 		readConfigFile();
 
@@ -36,6 +40,9 @@ public class Server {
 		}
 	}
 
+	/**
+	 * reads the propertyfile and setting the fields to its data for further use.
+	 */
 	private void readConfigFile(){
 		Properties props = new Properties();
 		InputStream input = null;
