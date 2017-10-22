@@ -9,12 +9,12 @@ import java.util.Properties;
 
 public class Server {
 
+	private static int portNumber;
+	private List<ClientThread> clients = new ArrayList<>();
+
 	public static void main(String[] args) {
 		new Server();
 	}
-
-	private static int portNumber;
-	private List<ClientThread> clients = new ArrayList<>();
 
 	public Server() {
 		readConfigFile();
@@ -63,7 +63,6 @@ public class Server {
 					//tom
 				}
 			}
-
 		}
 	}
 

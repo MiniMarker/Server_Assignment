@@ -37,7 +37,6 @@ public class DBConnection {
 			userName = (props.getProperty("username"));
 			password = (props.getProperty("password"));
 
-
 		} catch (IOException ioex){
 			ioex.getMessage();
 		}
@@ -63,7 +62,6 @@ public class DBConnection {
 			System.out.println("Connected!");
 
 			stmt = con.createStatement();
-
 			stmt.executeUpdate("DROP SCHEMA IF EXISTS " + dbName);
 			stmt.executeUpdate("CREATE SCHEMA " + dbName);
 			System.out.println("Database " + dbName + " created!");
@@ -82,14 +80,5 @@ public class DBConnection {
 			}
 		}
 	}
-
-
-	/**
-	 * Test methods
-	 */
-	public String getDbName() {
-		return dbName;
-	}
-
 }
 

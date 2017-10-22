@@ -31,9 +31,7 @@ public class DBHandler {
 		try (Connection con = dbCon.ds.getConnection();
 		     Statement stmt = con.createStatement()) {
 
-			String readSqlFileString = readSqlFile("files/createSubjectTableSql.txt");
-
-			stmt.executeUpdate(readSqlFileString);
+			stmt.executeUpdate(readSqlFile("files/createSubjectTableSql.txt"));
 
 			text = ("Subject table created...");
 

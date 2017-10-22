@@ -2,12 +2,10 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.*;
-import java.util.ArrayList;
 
 public class InputHandler {
 
 	private DBConnection dbCon;
-	private ArrayList<String> list = new ArrayList<>();
 	private String text = "";
 	private String result;
 
@@ -19,7 +17,6 @@ public class InputHandler {
 	/**
 	 * Add data to Subject table form file
 	 */
-
 	public String addSubjectDataFromFile() {
 
 		try (Connection con = dbCon.ds.getConnection()) {
@@ -99,7 +96,8 @@ public class InputHandler {
 			StringBuilder stringBuilder = new StringBuilder();
 
 			while (rs.next()) {
-				stringBuilder.append("Emnekode: " + rs.getString(1) +
+				stringBuilder.append(
+						"Emnekode: " + rs.getString(1) +
 						" Enmenavn: " + rs.getString(2) +
 						" Varighet: " + rs.getDouble(3) +
 						" Antall påmeldte: " + rs.getInt(4) + "\n");

@@ -25,7 +25,6 @@ public class ClientThread implements Runnable {
 
 			while (flag) {
 
-				//start menyen
 				startMenu();
 
 				//Lese input fra klineten
@@ -43,17 +42,15 @@ public class ClientThread implements Runnable {
 		} catch (Exception e){
 			e.getMessage();
 		} finally {
-
 			outputToClient.close();
 
 			if (clientInput != null){
 				try {
 					clientInput.close();
 				} catch (IOException ioex){
-					//Tom med vilje
+					//empty
 				}
 			}
-
 		}
 	}
 
@@ -69,7 +66,6 @@ public class ClientThread implements Runnable {
 			choice = clientInput.readLine();
 
 			switch (choice){
-
 				case "1":
 					outputToClient.print("Kobler til databasen...");
 					DBConnection dbConnection = new DBConnection();
@@ -109,7 +105,6 @@ public class ClientThread implements Runnable {
 			choice = clientInput.readLine();
 
 			switch (choice){
-
 				case "1":
 					dbHandler = new DBHandler();
 					dbHandler.dropTablesIfExists();
@@ -161,7 +156,6 @@ public class ClientThread implements Runnable {
 			choice = clientInput.readLine();
 
 			switch (choice) {
-
 				case "1":
 					outputToClient.println("Oppretter 'subject' table...'");
 					inputHandler = new InputHandler();
@@ -205,7 +199,6 @@ public class ClientThread implements Runnable {
 			choice = clientInput.readLine();
 
 			switch (choice){
-
 				case "1":
 					outputToClient.println("----------------- SUBJECTS ------------------");
 					inputHandler = new InputHandler();
