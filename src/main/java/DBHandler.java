@@ -5,6 +5,7 @@ import java.sql.*;
 
 public class DBHandler {
 
+	private ClientThread clientThread;
 	private DBConnection dbCon;
 	private String text;
 	private String sqlQuery;
@@ -38,7 +39,7 @@ public class DBHandler {
 		try (Connection con = dbCon.ds.getConnection();
 		     Statement stmt = con.createStatement()) {
 
-			stmt.executeUpdate(readSqlFile("files/createSubjectTableSql.sql"));
+			stmt.executeUpdate(readSqlFile("target/textfiles/createSubjectTableSql.sql"));
 
 			text = ("Subject table created...");
 

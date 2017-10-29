@@ -22,7 +22,7 @@ public class InputHandler {
 
 		try (Connection con = dbCon.ds.getConnection()) {
 
-			try (BufferedReader br = new BufferedReader(new FileReader("files/subjects.csv"));
+			try (BufferedReader br = new BufferedReader(new FileReader("target/textfiles/subjects.csv"));
 			     PreparedStatement prepSubjectStmt = con.prepareStatement("INSERT INTO Subject VALUES (?,?,?,?)")) {
 
 				int count = 0;

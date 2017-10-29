@@ -9,7 +9,9 @@ public class Client {
 	private static int portNumber;
 
 	public static void main(String[] args) {
-		new Client();
+		Client client = new Client();
+
+		client.readConfigFile();
 	}
 
 	/**

@@ -8,6 +8,10 @@ hvor jeg her har forenklet databasen til kun å håndtere en enkelt tabell isted
 
 Dette README doukumentet inneholder instrukser som trengs for å få løsningen til å kjøre på din maskin.
 
+**— Maven**
+
+Når du åpner programmet er det viktig at du kjører enten kommadoen **mvn package** får å få med filene til databasen.
+
 **— Properties**
 
 I mappen 'resources' ligger det to property-filer. 
