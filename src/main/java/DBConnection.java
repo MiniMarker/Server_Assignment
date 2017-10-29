@@ -66,14 +66,11 @@ public class DBConnection {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 
-			System.out.println("Connecting to " + host + " database using username = " + userName + "...");
 			con = DriverManager.getConnection("jdbc:mysql://" + host + "/?user=" + userName + "&password=" + password);
-			System.out.println("Connected!");
-
 			stmt = con.createStatement();
+
 			stmt.executeUpdate("DROP SCHEMA IF EXISTS " + dbName);
 			stmt.executeUpdate("CREATE SCHEMA " + dbName);
-			System.out.println("Database " + dbName + " created!");
 
 		} catch (SQLException sqle){
 			System.out.println("SQL ERROR! " + sqle.getMessage());

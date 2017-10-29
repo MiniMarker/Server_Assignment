@@ -10,7 +10,8 @@ Dette README doukumentet inneholder instrukser som trengs for å få løsningen 
 
 **— Maven**
 
-Når du åpner programmet er det viktig at du kjører enten kommadoen **mvn package** får å få med filene til databasen.
+Når du åpner koden i ditt ønskede IDE er det viktig at du kjører enten kommadoen **mvn package**. Dette er for at filene 
+som brukes for å opprette tabellen og fylle den med data skal genereres ved bruk av maven.
 
 **— Properties**
 
@@ -26,11 +27,8 @@ Dette er filer som er felter å endre for å kunne få prosjektet til å kjøre 
 
 **— Kjør koden**
 
-Deretter er det bare å åpne prosjektet i ønsket IDE.
-
-For å få få løsningen til å fungere må du først kjøre klassen **'Server'** sin main-metode.
-
-Deretter kan du koble til så mange klienter du bare vil ved å kjøre klassen **'Client'** sin main-metode
+For å få få løsningen til å fungere må du først kjøre klassen **'Server'** sin main-metode. Deretter kan du koble til 
+så mange klienter du bare vil ved å kjøre klassen **'Client'** sin main-metode.
 
 
 ### Enjoy
