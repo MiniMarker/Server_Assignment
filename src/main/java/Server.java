@@ -2,15 +2,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Properties;
 
 public class Server {
 
 	private static int portNumber;
-	private List<ClientThread> clients = new ArrayList<>();
 
 	public static void main(String[] args) {
 		new Server();
@@ -31,7 +28,6 @@ public class Server {
 				Socket socket = serverSocket.accept();
 
 				ClientThread clientThread = new ClientThread(socket);
-				clients.add(clientThread);
 
 				new Thread(clientThread).start();
 			}
@@ -71,9 +67,5 @@ public class Server {
 				}
 			}
 		}
-	}
-
-	public List<ClientThread> getClients() {
-		return clients;
 	}
 }
