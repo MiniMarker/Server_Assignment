@@ -5,10 +5,6 @@ public class ClientThread implements Runnable {
 
 	private String choice;
 
-	public void setFlag(boolean flag) {
-		this.flag = flag;
-	}
-
 	private boolean flag = true;
 
 	private PrintWriter outputToClient;

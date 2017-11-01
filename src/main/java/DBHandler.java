@@ -8,7 +8,7 @@ public class DBHandler {
 	private ClientThread clientThread;
 	private DBConnection dbCon;
 	private String text;
-	private String sqlQuery;
+	private String result;
 
 
 	public DBHandler() {
@@ -54,24 +54,23 @@ public class DBHandler {
 	 * @param filepath the absolute file path to the .txt file.
 	 * @return a string of the file by using a StringBuilder, in this intance a SQL-string.
 	 */
-	private String readSqlFile(String filepath){
+	public String readSqlFile(String filepath){
 
-		try {
-			BufferedReader sqlFileReader = new BufferedReader(new FileReader(filepath));
+		try(BufferedReader sqlFileReader = new BufferedReader(new FileReader(filepath));) {
 
 			StringBuilder stringBuilder = new StringBuilder();
 			String line = sqlFileReader.readLine();
 
 			while (line != null) {
-				stringBuilder.append(line);
+				stringBuilder.append(line + " ");
 				line = sqlFileReader.readLine();
 			}
 
-			sqlQuery = stringBuilder.toString();
+			result = stringBuilder.toString();
 
 		} catch (IOException ioex){
 			ioex.getMessage();
 		}
-		return sqlQuery;
+		return result;
 	}
 }

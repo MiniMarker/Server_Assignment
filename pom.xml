@@ -26,7 +26,7 @@
                 <configuration>
                     <charset>UTF-8</charset>
 
-                    <!-- DATAFILE -->
+                    <!-- DATAFILES -->
                     <files>
                         <file>
                             <path>target/textfiles/subjects.csv</path>
@@ -55,6 +55,26 @@
                                 <line>numStudents int NOT NULL,</line>
                                 <line>PRIMARY KEY (code),</line>
                                 <line>UNIQUE code_UNIQUE (code ASC));</line>
+                            </lines>
+                        </file>
+
+                        <!-- TEST FILE -->
+                        <file>
+                            <path>target/textfiles/testFile.csv</path>
+                            <lines>
+                                <line>This </line>
+                                <line>is </line>
+                                <line>a </line>
+                                <line>test </line>
+                                <line>to </line>
+                                <line>see </line>
+                                <line>if </line>
+                                <line>this </line>
+                                <line>method </line>
+                                <line>reads </line>
+                                <line>the </line>
+                                <line>file </line>
+                                <line>correctly.</line>
                             </lines>
                         </file>
                     </files>
