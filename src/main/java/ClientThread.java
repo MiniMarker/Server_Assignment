@@ -55,7 +55,7 @@ public class ClientThread implements Runnable {
 				try {
 					clientInput.close();
 				} catch (IOException ioex){
-					//empty
+					//empty on purpose
 				}
 			}
 		}

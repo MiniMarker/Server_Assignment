@@ -82,7 +82,7 @@ public class DBConnection {
 					stmt.close();
 				}
 			} catch (SQLException sqle2) {
-				//empty
+				//empty on purpose
 			}
 		}
 	}

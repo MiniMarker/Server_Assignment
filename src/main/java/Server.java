@@ -67,7 +67,7 @@ public class Server {
 				try {
 					input.close();
 				} catch (IOException ioex){
-					//tom
+					//empty on purpose
 				}
 			}
 		}

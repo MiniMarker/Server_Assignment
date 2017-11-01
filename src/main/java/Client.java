@@ -68,6 +68,14 @@ public class Client {
 
 		} catch (IOException ioex){
 			ioex.getMessage();
+		} finally {
+			if (input != null){
+				try {
+					input.close();
+				} catch (IOException ioex){
+					//empty on purpose
+				}
+			}
 		}
 	}
 }

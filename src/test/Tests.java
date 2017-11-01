@@ -1,12 +1,11 @@
 import org.junit.Test;
-import org.junit.Assert;
 
 import static org.junit.Assert.assertEquals;
 
 /**
  * @author Christian on 01.11.2017.
  */
-public class readFileTest {
+public class Tests {
 
 	@Test
 	public void shouldReturnOneString(){
