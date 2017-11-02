@@ -12,15 +12,36 @@ public class DBConnection {
 	private String host;
 	private String userName;
 	private String password;
+	private Connection connection;
 
 	public DBConnection() {
 		readConfigFile();
 	}
 
 	/**
+	 * establishes a new MySqlDataSource bu using the properties of the fields
+	 */
+	public Connection connect(){
+
+		try{
+			ds = new MysqlDataSource();
+			ds.setDatabaseName(dbName);
+			ds.setServerName(host);
+			ds.setUser(userName);
+			ds.setPassword(password);
+
+			connection = ds.getConnection();
+		} catch (SQLException sqle){
+			sqle.getMessage();
+		}
+		return connection;
+	}
+
+	/**
 	 * reads the propertyfile and setting the fields to its data for further use.
 	 */
 	private void readConfigFile(){
+
 		Properties props = new Properties();
 		InputStream input;
 
@@ -43,17 +64,6 @@ public class DBConnection {
 		} catch (IOException ioex){
 			ioex.getMessage();
 		}
-	}
-
-	/**
-	 * establishes a new MySqlDataSource bu using the properties of the fields
-	 */
-	public void connect(){
-		ds = new MysqlDataSource();
-		ds.setDatabaseName(dbName);
-		ds.setServerName(host);
-		ds.setUser(userName);
-		ds.setPassword(password);
 	}
 
 	/**

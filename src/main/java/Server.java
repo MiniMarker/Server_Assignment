@@ -25,9 +25,9 @@ public class Server {
 			System.out.println("Server started on port: " + portNumber + " on: " + new Date());
 
 			while (true){
-				Socket socket = serverSocket.accept();
+				Socket clientSocket = serverSocket.accept();
 
-				ClientThread clientThread = new ClientThread(socket);
+				ClientThread clientThread = new ClientThread(clientSocket);
 
 				new Thread(clientThread).start();
 			}

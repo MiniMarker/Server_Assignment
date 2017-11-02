@@ -20,7 +20,7 @@ public class InputHandler {
 	 */
 	public String addSubjectDataFromFile() {
 
-		try (Connection con = dbCon.ds.getConnection()) {
+		try (Connection con = dbCon.connect()) {
 
 			try (BufferedReader br = new BufferedReader(new FileReader("target/textfiles/subjects.csv"));
 			     PreparedStatement prepSubjectStmt = con.prepareStatement("INSERT INTO Subject VALUES (?,?,?,?)")) {
@@ -61,7 +61,7 @@ public class InputHandler {
 	 * @return one ResultSet defined by a query based on subject.code
 	 */
 	public String printSingleSubject(String code) {
-		try (Connection con = dbCon.ds.getConnection();
+		try (Connection con = dbCon.connect();
 		     PreparedStatement prepSingeSubjectStmt = con.prepareStatement("SELECT * FROM Subject WHERE code = ?")) {
 
 			prepSingeSubjectStmt.setString(1, code);
@@ -87,7 +87,7 @@ public class InputHandler {
 	 */
 	public String printAllSubjects() {
 
-		try (Connection con = dbCon.ds.getConnection();
+		try (Connection con = dbCon.connect();
 		     Statement stmt = con.createStatement()) {
 
 			ResultSet rs = stmt.executeQuery("SELECT * FROM Subject");

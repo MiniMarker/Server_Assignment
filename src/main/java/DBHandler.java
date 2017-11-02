@@ -20,7 +20,7 @@ public class DBHandler {
 	 * Runs a query that drops the table if it exists.
 	 */
 	public void dropTablesIfExists() {
-		try (Connection con = dbCon.ds.getConnection();
+		try (Connection con = dbCon.connect();
 		     Statement stmt = con.createStatement()) {
 
 			stmt.executeUpdate("DROP TABLE IF EXISTS Subject;");
@@ -36,7 +36,7 @@ public class DBHandler {
 	 */
 	public String createSubjectTable() {
 
-		try (Connection con = dbCon.ds.getConnection();
+		try (Connection con = dbCon.connect();
 		     Statement stmt = con.createStatement()) {
 
 			stmt.executeUpdate(readSqlFile("target/textfiles/createSubjectTableSql.sql"));
