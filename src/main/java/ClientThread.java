@@ -14,8 +14,8 @@ public class ClientThread implements Runnable {
 	private InputHandler inputHandler;
 
 
-	public ClientThread(Socket clientSocket) {
-		threadSocket = clientSocket;
+	public ClientThread(Socket socket) {
+		threadSocket = socket;
 	}
 
 	/**

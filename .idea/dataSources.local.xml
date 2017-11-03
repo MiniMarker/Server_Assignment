@@ -11,5 +11,11 @@
       <user-name>root</user-name>
       <introspection-schemas>*:TimetableWesterdals,hskole</introspection-schemas>
     </data-source>
+    <data-source name="default@localhost" uuid="ff3eb996-0596-4f7a-af74-da696488d548">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <secret-storage>master_key</secret-storage>
+      <first-sync>true</first-sync>
+      <user-name>sa</user-name>
+    </data-source>
   </component>
 </project>

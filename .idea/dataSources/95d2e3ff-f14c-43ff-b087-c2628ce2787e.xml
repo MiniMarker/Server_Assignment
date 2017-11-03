@@ -21,162 +21,165 @@
     <schema id="13" parent="1" name="Schedule"/>
     <schema id="14" parent="1" name="skole"/>
     <schema id="15" parent="1" name="things"/>
-    <table id="16" parent="2" name="EPost"/>
-    <table id="17" parent="2" name="Emne"/>
-    <table id="18" parent="2" name="Emne_Studie"/>
-    <table id="19" parent="2" name="Student"/>
-    <table id="20" parent="2" name="Studie"/>
-    <table id="21" parent="11" name="Subject"/>
-    <column id="22" parent="16" name="epost">
+    <schema id="16" parent="1" name="H2TestDB">
+      <Current>1</Current>
+    </schema>
+    <table id="17" parent="2" name="EPost"/>
+    <table id="18" parent="2" name="Emne"/>
+    <table id="19" parent="2" name="Emne_Studie"/>
+    <table id="20" parent="2" name="Student"/>
+    <table id="21" parent="2" name="Studie"/>
+    <table id="22" parent="11" name="Subject"/>
+    <column id="23" parent="17" name="epost">
       <Position>1</Position>
       <DataType>varchar(100)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="23" parent="16" name="Student_studNr">
+    <column id="24" parent="17" name="Student_studNr">
       <Position>2</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="24" parent="16" name="EPost_Student_studNr_fk">
+    <index id="25" parent="17" name="EPost_Student_studNr_fk">
       <ColNames>Student_studNr</ColNames>
     </index>
-    <key id="25" parent="16" name="PRIMARY">
+    <key id="26" parent="17" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>epost</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="26" parent="16" name="EPost_Student_studNr_fk">
+    <foreign-key id="27" parent="17" name="EPost_Student_studNr_fk">
       <ColNames>Student_studNr</ColNames>
       <RefSchemaName>hskole</RefSchemaName>
       <RefTableName>Student</RefTableName>
       <RefColNames>studNr</RefColNames>
     </foreign-key>
-    <column id="27" parent="17" name="id">
+    <column id="28" parent="18" name="id">
       <Position>1</Position>
       <DataType>char(6)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="28" parent="17" name="tittel">
+    <column id="29" parent="18" name="tittel">
       <Position>2</Position>
       <DataType>varchar(100)|0</DataType>
     </column>
-    <key id="29" parent="17" name="PRIMARY">
+    <key id="30" parent="18" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="30" parent="18" name="Studie_id">
+    <column id="31" parent="19" name="Studie_id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="31" parent="18" name="Emne_id">
+    <column id="32" parent="19" name="Emne_id">
       <Position>2</Position>
       <DataType>char(6)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="32" parent="18" name="Emne_Studie_Emne_id_fk">
+    <index id="33" parent="19" name="Emne_Studie_Emne_id_fk">
       <ColNames>Emne_id</ColNames>
     </index>
-    <key id="33" parent="18" name="PRIMARY">
+    <key id="34" parent="19" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>Studie_id
 Emne_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="34" parent="18" name="Emne_Studie_Studie_id_fk">
+    <foreign-key id="35" parent="19" name="Emne_Studie_Studie_id_fk">
       <ColNames>Studie_id</ColNames>
       <RefSchemaName>hskole</RefSchemaName>
       <RefTableName>Studie</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="35" parent="18" name="Emne_Studie_Emne_id_fk">
+    <foreign-key id="36" parent="19" name="Emne_Studie_Emne_id_fk">
       <ColNames>Emne_id</ColNames>
       <RefSchemaName>hskole</RefSchemaName>
       <RefTableName>Emne</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="36" parent="19" name="studNr">
+    <column id="37" parent="20" name="studNr">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="37" parent="19" name="navn">
+    <column id="38" parent="20" name="navn">
       <Position>2</Position>
       <DataType>varchar(100)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="38" parent="19" name="adresse">
+    <column id="39" parent="20" name="adresse">
       <Position>3</Position>
       <DataType>varchar(100)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="39" parent="19" name="Studie_id">
+    <column id="40" parent="20" name="Studie_id">
       <Position>4</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="40" parent="19" name="Student_Studie_id_fk">
+    <index id="41" parent="20" name="Student_Studie_id_fk">
       <ColNames>Studie_id</ColNames>
     </index>
-    <key id="41" parent="19" name="PRIMARY">
+    <key id="42" parent="20" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>studNr</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="42" parent="19" name="Student_Studie_id_fk">
+    <foreign-key id="43" parent="20" name="Student_Studie_id_fk">
       <ColNames>Studie_id</ColNames>
       <RefSchemaName>hskole</RefSchemaName>
       <RefTableName>Studie</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="43" parent="20" name="id">
+    <column id="44" parent="21" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="44" parent="20" name="navn">
+    <column id="45" parent="21" name="navn">
       <Position>2</Position>
       <DataType>varchar(100)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="45" parent="20" name="PRIMARY">
+    <key id="46" parent="21" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="46" parent="21" name="code">
+    <column id="47" parent="22" name="code">
       <Position>1</Position>
       <DataType>varchar(10)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="47" parent="21" name="name">
+    <column id="48" parent="22" name="name">
       <Position>2</Position>
       <DataType>varchar(100)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="48" parent="21" name="duration">
+    <column id="49" parent="22" name="duration">
       <Position>3</Position>
       <DataType>double|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="49" parent="21" name="numStudents">
+    <column id="50" parent="22" name="numStudents">
       <Position>4</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="50" parent="21" name="code_UNIQUE">
+    <index id="51" parent="22" name="code_UNIQUE">
       <ColNames>code</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="51" parent="21" name="PRIMARY">
+    <key id="52" parent="22" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>code</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="52" parent="21" name="code_UNIQUE">
+    <key id="53" parent="22" name="code_UNIQUE">
       <ColNames>code</ColNames>
       <UnderlyingIndexName>code_UNIQUE</UnderlyingIndexName>
     </key>

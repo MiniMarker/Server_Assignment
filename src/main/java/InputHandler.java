@@ -2,12 +2,16 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class InputHandler {
 
 	private DBConnection dbCon;
 	private String text = "";
 	private String result;
+
+	private List<Subject> subjectList = new ArrayList<>();
 
 	public InputHandler() {
 		dbCon = new DBConnection();
@@ -20,7 +24,8 @@ public class InputHandler {
 	 */
 	public String addSubjectDataFromFile() {
 
-		try (Connection con = dbCon.connect()) {
+
+		try (Connection con = dbCon.ds.getConnection()) {
 
 			try (BufferedReader br = new BufferedReader(new FileReader("target/textfiles/subjects.csv"));
 			     PreparedStatement prepSubjectStmt = con.prepareStatement("INSERT INTO Subject VALUES (?,?,?,?)")) {
@@ -40,6 +45,9 @@ public class InputHandler {
 					prepSubjectStmt.setInt(4, Integer.parseInt(subjects[3]));
 
 					prepSubjectStmt.executeUpdate();
+
+					subjectList.add(new Subject(subjects[0], subjects[1], Double.parseDouble(subjects[2]), Integer.parseInt(subjects[3])));
+
 					count++;
 				}
 
@@ -61,7 +69,7 @@ public class InputHandler {
 	 * @return one ResultSet defined by a query based on subject.code
 	 */
 	public String printSingleSubject(String code) {
-		try (Connection con = dbCon.connect();
+		try (Connection con = dbCon.ds.getConnection();
 		     PreparedStatement prepSingeSubjectStmt = con.prepareStatement("SELECT * FROM Subject WHERE code = ?")) {
 
 			prepSingeSubjectStmt.setString(1, code);
@@ -87,7 +95,7 @@ public class InputHandler {
 	 */
 	public String printAllSubjects() {
 
-		try (Connection con = dbCon.connect();
+		try (Connection con = dbCon.ds.getConnection();
 		     Statement stmt = con.createStatement()) {
 
 			ResultSet rs = stmt.executeQuery("SELECT * FROM Subject");
@@ -108,5 +116,10 @@ public class InputHandler {
 			System.out.println("SQL ERROR! " + sqle.getMessage());
 		}
 		return result;
+	}
+
+	//FOR TEST USE
+	public List<Subject> getSubjectList() {
+		return subjectList;
 	}
 }

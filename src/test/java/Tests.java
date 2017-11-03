@@ -14,6 +14,7 @@ public class Tests {
 		String filepath = "target/textfiles/testFile.csv";
 		String result = dbHandler.readSqlFile(filepath);
 
+		System.out.println(result);
 		assertEquals("This is a test to see if this method reads the file correctly. ", result);
 	}
 }
