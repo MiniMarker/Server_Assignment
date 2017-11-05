@@ -9,7 +9,7 @@
       <case-sensitivity plain-identifiers="mixed" quoted-identifiers="upper" />
       <secret-storage>master_key</secret-storage>
       <user-name>root</user-name>
-      <introspection-schemas>*:TimetableWesterdals,hskole</introspection-schemas>
+      <introspection-schemas>*:TestTimetableWesterdals,TimetableWesterdals,hskole</introspection-schemas>
     </data-source>
     <data-source name="default@localhost" uuid="ff3eb996-0596-4f7a-af74-da696488d548">
       <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />

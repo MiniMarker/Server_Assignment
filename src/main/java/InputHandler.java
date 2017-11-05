@@ -11,8 +11,6 @@ public class InputHandler {
 	private String text = "";
 	private String result;
 
-	private List<Subject> subjectList = new ArrayList<>();
-
 	public InputHandler() {
 		dbCon = new DBConnection();
 		dbCon.connect();
@@ -22,10 +20,9 @@ public class InputHandler {
 	 * Add data to Subject table form file
 	 * @return returns numbers of rows created
 	 */
-	public String addSubjectDataFromFile() {
+	public String addSubjectDataFromFile(Connection connection) {
 
-
-		try (Connection con = dbCon.ds.getConnection()) {
+		try (Connection con = connection) {
 
 			try (BufferedReader br = new BufferedReader(new FileReader("target/textfiles/subjects.csv"));
 			     PreparedStatement prepSubjectStmt = con.prepareStatement("INSERT INTO Subject VALUES (?,?,?,?)")) {
@@ -45,8 +42,6 @@ public class InputHandler {
 					prepSubjectStmt.setInt(4, Integer.parseInt(subjects[3]));
 
 					prepSubjectStmt.executeUpdate();
-
-					subjectList.add(new Subject(subjects[0], subjects[1], Double.parseDouble(subjects[2]), Integer.parseInt(subjects[3])));
 
 					count++;
 				}
@@ -68,8 +63,8 @@ public class InputHandler {
 	 * Print one subject defined by subject.code
 	 * @return one ResultSet defined by a query based on subject.code
 	 */
-	public String printSingleSubject(String code) {
-		try (Connection con = dbCon.ds.getConnection();
+	public String printSingleSubject(Connection connection, String code) {
+		try (Connection con = connection;
 		     PreparedStatement prepSingeSubjectStmt = con.prepareStatement("SELECT * FROM Subject WHERE code = ?")) {
 
 			prepSingeSubjectStmt.setString(1, code);
@@ -83,6 +78,10 @@ public class InputHandler {
 						+ rs.getInt(4));
 			}
 
+			if (text.isEmpty()){
+				text = "Found no subject with code: " + code;
+			}
+
 		} catch (SQLException sqle) {
 			System.out.println("SQL ERROR! " + sqle.getMessage());
 		}
@@ -93,9 +92,9 @@ public class InputHandler {
 	 * Print all subjects in database
 	 * @return Strings of all rows in the db-table built by using a StringBuilder
 	 */
-	public String printAllSubjects() {
+	public String printAllSubjects(Connection connection) {
 
-		try (Connection con = dbCon.ds.getConnection();
+		try (Connection con = connection;
 		     Statement stmt = con.createStatement()) {
 
 			ResultSet rs = stmt.executeQuery("SELECT * FROM Subject");
@@ -116,10 +115,5 @@ public class InputHandler {
 			System.out.println("SQL ERROR! " + sqle.getMessage());
 		}
 		return result;
-	}
-
-	//FOR TEST USE
-	public List<Subject> getSubjectList() {
-		return subjectList;
 	}
 }

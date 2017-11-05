@@ -5,7 +5,6 @@ import java.sql.*;
 
 public class DBHandler {
 
-	private ClientThread clientThread;
 	private DBConnection dbCon;
 	private String text;
 	private String result;
@@ -19,24 +18,26 @@ public class DBHandler {
 	/**
 	 * Runs a query that drops the table if it exists.
 	 */
-	public void dropTablesIfExists() {
-		try (Connection con = dbCon.ds.getConnection();
+	public boolean dropTablesIfExists(Connection connection) {
+		try (Connection con = connection;
 		     Statement stmt = con.createStatement()) {
 
 			stmt.executeUpdate("DROP TABLE IF EXISTS Subject;");
+			return true;
 
 		} catch (SQLException sqle){
 			System.out.println("SQL ERROR! " + sqle.getMessage());
 		}
+		return false;
 	}
 
 	/**
 	 * this method uses readSqlFile(String filepath) to run a query that creates the table.
 	 * @return a confirmation text
 	 */
-	public String createSubjectTable() {
+	public String createSubjectTable(Connection connection) {
 
-		try (Connection con = dbCon.ds.getConnection();
+		try (Connection con = connection;
 		     Statement stmt = con.createStatement()) {
 
 			stmt.executeUpdate(readSqlFile("target/textfiles/createSubjectTableSql.sql"));

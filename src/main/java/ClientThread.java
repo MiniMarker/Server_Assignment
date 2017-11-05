@@ -12,7 +12,7 @@ public class ClientThread implements Runnable {
 	private Socket threadSocket;
 	private DBHandler dbHandler;
 	private InputHandler inputHandler;
-
+	private DBConnection dbCon = new DBConnection();
 
 	public ClientThread(Socket socket) {
 		threadSocket = socket;
@@ -122,7 +122,7 @@ public class ClientThread implements Runnable {
 			switch (choice){
 				case "1":
 					dbHandler = new DBHandler();
-					dbHandler.dropTablesIfExists();
+					dbHandler.dropTablesIfExists(dbCon.connect());
 					outputToClient.print("Dropper tabellen hvis den eksisterer...");
 					outputToClient.println("Vellykket \n");
 
@@ -132,7 +132,7 @@ public class ClientThread implements Runnable {
 
 				case "2":
 					outputToClient.println("Oppretter tabellen 'subject'...");
-					outputToClient.println(dbHandler.createSubjectTable());
+					outputToClient.println(dbHandler.createSubjectTable(dbCon.connect()));
 					outputToClient.println("Vellykket! \n");
 
 					//neste meny
@@ -177,7 +177,7 @@ public class ClientThread implements Runnable {
 				case "1":
 					outputToClient.println("Oppretter 'subject' table...'");
 					inputHandler = new InputHandler();
-					outputToClient.println(inputHandler.addSubjectDataFromFile());
+					outputToClient.println(inputHandler.addSubjectDataFromFile(dbCon.connect()));
 					outputToClient.println("Vellykket");
 
 					//neste meny
@@ -223,7 +223,7 @@ public class ClientThread implements Runnable {
 				case "1":
 					outputToClient.println("----------------- SUBJECTS ------------------");
 					inputHandler = new InputHandler();
-					outputToClient.println(inputHandler.printAllSubjects() + "\n");
+					outputToClient.println(inputHandler.printAllSubjects(dbCon.connect()) + "\n");
 
 					//slutten av menyen, rekursivt kall
 					printDataFromDatabaseMenu();
@@ -234,7 +234,7 @@ public class ClientThread implements Runnable {
 					String emnekode = clientInput.readLine();
 					outputToClient.println("----------- PRINTING ONE SUBJECT ------------");
 					inputHandler = new InputHandler();
-					outputToClient.println(inputHandler.printSingleSubject(emnekode) + "\n");
+					outputToClient.println(inputHandler.printSingleSubject(dbCon.connect(), emnekode) + "\n");
 
 					//slutten av menyen, rekursivt kall
 					printDataFromDatabaseMenu();

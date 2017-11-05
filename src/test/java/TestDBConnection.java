@@ -6,7 +6,7 @@ import java.io.InputStream;
 import java.sql.*;
 import java.util.Properties;
 
-public class DBConnection {
+public class TestDBConnection {
 
 	MysqlDataSource ds;
 	private String dbName;
@@ -14,11 +14,15 @@ public class DBConnection {
 	private String userName;
 	private String password;
 
-	//private ReadProperties readProperties = new ReadProperties();
 	private Connection connection;
 
-	public DBConnection() {
+	public TestDBConnection() {
 		readConfigFile();
+	}
+
+	public static void main(String[] args) {
+		TestDBConnection testDBConnection = new TestDBConnection();
+		testDBConnection.setupCheck();
 	}
 
 	/**
@@ -47,20 +51,17 @@ public class DBConnection {
 		Properties props = new Properties();
 		InputStream input;
 
-		String filepath = "dbConfig.properties";
-
 		try {
-			//String filePath = "dbConfig.properties";
-			input = DBConnection.class.getClassLoader().getResourceAsStream(filepath);
+			String filePath = "dbConfig.properties";
+			input = DBConnection.class.getClassLoader().getResourceAsStream(filePath);
 
 			if (input == null) {
-				System.out.println("Unable to read file at " + filepath);
+				System.out.println("Unable to read file at " + filePath);
 				return;
 			}
 
 			props.load(input);
-
-			dbName = (props.getProperty("dbName"));
+			dbName = (props.getProperty("testdbName"));
 			host = (props.getProperty("host"));
 			userName = (props.getProperty("username"));
 			password = (props.getProperty("password"));
@@ -75,20 +76,31 @@ public class DBConnection {
 	 * does a setup check that connects to the mySQL server and creates the schema
 	 */
 	public void setupCheck() {
+		Connection con;
+		Statement stmt = null;
 
-		try (Connection con = DriverManager.getConnection("jdbc:mysql://" + host + "/?user=" + userName + "&password=" + password);
-		     Statement stmt = con.createStatement()) {
-
+		try {
 			Class.forName("com.mysql.jdbc.Driver");
 
-			stmt.addBatch("DROP SCHEMA IF EXISTS " + dbName);
-			stmt.addBatch("CREATE SCHEMA " + dbName);
-			stmt.executeBatch();
+			con = DriverManager.getConnection("jdbc:mysql://" + host + "/?user=" + userName + "&password=" + password);
+			stmt = con.createStatement();
+
+			stmt.executeUpdate("DROP SCHEMA IF EXISTS " + dbName);
+			stmt.executeUpdate("CREATE SCHEMA " + dbName);
+
 
 		} catch (SQLException sqle) {
 			System.out.println("SQL ERROR! " + sqle.getMessage());
 		} catch (ClassNotFoundException cnfe) {
 			System.out.println("ClassNotFoundError! " + cnfe.getMessage());
+		} finally {
+			try {
+				if (stmt != null) {
+					stmt.close();
+				}
+			} catch (SQLException sqle2) {
+				//empty on purpose
+			}
 		}
 	}
 }
