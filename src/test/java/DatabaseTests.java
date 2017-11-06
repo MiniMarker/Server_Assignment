@@ -17,7 +17,7 @@ public class DatabaseTests {
 	@Before
 	public void setup(){
 		testCon = new TestDBConnection();
-		testCon.setupCheck();
+		assertTrue(testCon.setupCheck());
 
 		DBHandler dbHandler = new DBHandler();
 		dbHandler.dropTablesIfExists(testCon.connect());

@@ -75,7 +75,7 @@ public class TestDBConnection {
 	/**
 	 * does a setup check that connects to the mySQL server and creates the schema
 	 */
-	public void setupCheck() {
+	public boolean setupCheck() {
 		Connection con;
 		Statement stmt = null;
 
@@ -88,6 +88,7 @@ public class TestDBConnection {
 			stmt.executeUpdate("DROP SCHEMA IF EXISTS " + dbName);
 			stmt.executeUpdate("CREATE SCHEMA " + dbName);
 
+			return true;
 
 		} catch (SQLException sqle) {
 			System.out.println("SQL ERROR! " + sqle.getMessage());
@@ -102,6 +103,8 @@ public class TestDBConnection {
 				//empty on purpose
 			}
 		}
+
+		return false;
 	}
 }
 
