@@ -17,6 +17,8 @@ public class DBHandler {
 
 	/**
 	 * Runs a query that drops the table if it exists.
+	 * @param connection a MySQLDataSource
+	 * @return a boolean to check if the deletion was successful.
 	 */
 	public boolean dropTablesIfExists(Connection connection) {
 		try (Connection con = connection;
@@ -33,6 +35,7 @@ public class DBHandler {
 
 	/**
 	 * this method uses readSqlFile(String filepath) to run a query that creates the table.
+	 * @param connection a MySQLDataSource
 	 * @return a confirmation text
 	 */
 	public String createSubjectTable(Connection connection) {
@@ -51,13 +54,32 @@ public class DBHandler {
 	}
 
 	/**
+	 * This method deletes the intire database... USE WITH CAUTION!!!!!!
+	 * @param connection a MySQLDataSource
+	 * @return a boolean to check if the deletion was successful
+	 */
+	public boolean destroyDatabase(Connection connection){
+
+		try (Connection con = connection;
+		     Statement stmt = con.createStatement()) {
+
+			stmt.executeQuery("DROP SCHEMA " + dbCon.ds.getDatabaseName());
+
+			return true;
+		} catch (SQLException sqle){
+			sqle.getMessage();
+		}
+		return false;
+	}
+
+	/**
 	 * This method reads text from a file and returns it as a string.
 	 * @param filepath the absolute file path to the .txt file.
 	 * @return a string of the file by using a StringBuilder, in this intance a SQL-string.
 	 */
 	public String readSqlFile(String filepath){
 
-		try(BufferedReader sqlFileReader = new BufferedReader(new FileReader(filepath));) {
+		try(BufferedReader sqlFileReader = new BufferedReader(new FileReader(filepath))) {
 
 			StringBuilder stringBuilder = new StringBuilder();
 			String line = sqlFileReader.readLine();

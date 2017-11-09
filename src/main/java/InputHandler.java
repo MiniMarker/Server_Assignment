@@ -16,6 +16,8 @@ public class InputHandler {
 		dbCon.connect();
 	}
 
+
+
 	/**
 	 * Add data to Subject table form file
 	 * @return returns numbers of rows created

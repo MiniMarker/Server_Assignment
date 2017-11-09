@@ -39,7 +39,7 @@ public class Server {
 	/**
 	 * reads the propertyfile and setting the fields to its data for further use.
 	 */
-	private void readConfigFile(){
+	private void readConfigFile() {
 		Properties props = new Properties();
 		InputStream input = null;
 

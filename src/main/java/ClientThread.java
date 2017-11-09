@@ -69,10 +69,13 @@ public class ClientThread implements Runnable {
 	 */
 	private void startMenu() {
 
-		outputToClient.println("Velkommen til serveren! \n" +
+		outputToClient.println(
+				"Velkommen til serveren! \n" +
 				"Skriv inn ønsket valg og avslutt med enter\n\n" +
+				"------------------------------------------------------------------------------------------------- \n" +
 				"1: Koble til og opprett databasen\n" +
-				"0: Koble fra serveren");
+				"0: Koble fra serveren\n" +
+				"-------------------------------------------------------------------------------------------------");
 
 		try {
 			choice = clientInput.readLine();
@@ -104,17 +107,19 @@ public class ClientThread implements Runnable {
 		} catch (IOException ioex){
 			System.out.println("Feil ved lesing av input: " + ioex.getMessage());
 		}
-
 	}
 
 	/**
 	 * database table creation/deletion
 	 */
 	private void serverInitMenu() {
-		outputToClient.println("1: Drop tabellen 'subject' hvis den eksisterer \n" +
+		outputToClient.println(
+				"------------------------------------------------------------------------------------------------- \n" +
+				"1: Drop tabellen 'subject' hvis den eksisterer \n" +
 				"2: Opprett tabeller \n" +
 				"9: Tilbake \n" +
-				"0: Koble fra serveren");
+				"0: Koble fra serveren\n" +
+				"-------------------------------------------------------------------------------------------------");
 
 		try {
 			choice = clientInput.readLine();
@@ -166,9 +171,12 @@ public class ClientThread implements Runnable {
 	 * populate the tables
 	 */
 	private void insertDataToTables() {
-		outputToClient.println("1: Fyll inn tabellen med data fra fil \n" +
+		outputToClient.println(
+				"------------------------------------------------------------------------------------------------- \n" +
+				"1: Fyll inn tabellen med data fra fil \n" +
 				"9: Tilbake \n" +
-				"0: Koble fra serveren");
+				"0: Koble fra serveren\n" +
+				"-------------------------------------------------------------------------------------------------");
 
 		try {
 			choice = clientInput.readLine();
@@ -211,17 +219,20 @@ public class ClientThread implements Runnable {
 	 * print data from the table, either by entering a specific subject code or print all the rows in the table.
 	 */
 	private void printDataFromDatabaseMenu() {
-		outputToClient.println("1: Print data fra tabellen 'subject'\n" +
-				"2: Print ett subject fra emnekode\n" +
+		outputToClient.println(
+				"------------------------------------------------------------------------------------------------- \n" +
+				"1: Print data fra tabellen 'subject'\n" +
+				"2: Print ett emne fra emnekode\n" +
 				"9: Tilbake\n" +
-				"0: Koble fra serveren");
+				"0: Koble fra serveren\n" +
+				"-------------------------------------------------------------------------------------------------");
 
 		try {
 			choice = clientInput.readLine();
 
 			switch (choice){
 				case "1":
-					outputToClient.println("----------------- SUBJECTS ------------------");
+					outputToClient.println("\n------------------------------------------- SUBJECTS --------------------------------------------");
 					inputHandler = new InputHandler();
 					outputToClient.println(inputHandler.printAllSubjects(dbCon.connect()) + "\n");
 
@@ -232,7 +243,7 @@ public class ClientThread implements Runnable {
 				case "2":
 					outputToClient.println("Skriv inn emnekode:");
 					String emnekode = clientInput.readLine();
-					outputToClient.println("----------- PRINTING ONE SUBJECT ------------");
+					outputToClient.println("\n--------------------------------------- PRINTING " + emnekode.toUpperCase() + " ---------------------------------------");
 					inputHandler = new InputHandler();
 					outputToClient.println(inputHandler.printSingleSubject(dbCon.connect(), emnekode) + "\n");
 

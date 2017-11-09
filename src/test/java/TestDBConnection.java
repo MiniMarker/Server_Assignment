@@ -1,5 +1,4 @@
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
-import com.sun.javaws.exceptions.InvalidArgumentException;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -8,13 +7,11 @@ import java.util.Properties;
 
 public class TestDBConnection {
 
-	MysqlDataSource ds;
+	MysqlDataSource testDs;
 	private String dbName;
 	private String host;
 	private String userName;
 	private String password;
-
-	private Connection connection;
 
 	public TestDBConnection() {
 		readConfigFile();
@@ -30,13 +27,13 @@ public class TestDBConnection {
 	 */
 	public Connection connect() {
 		try {
-			ds = new MysqlDataSource();
-			ds.setDatabaseName(dbName);
-			ds.setServerName(host);
-			ds.setUser(userName);
-			ds.setPassword(password);
+			testDs = new MysqlDataSource();
+			testDs.setDatabaseName(dbName);
+			testDs.setServerName(host);
+			testDs.setUser(userName);
+			testDs.setPassword(password);
 
-			return ds.getConnection();
+			return testDs.getConnection();
 
 		} catch (SQLException e) {
 			e.printStackTrace();

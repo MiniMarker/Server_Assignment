@@ -13,8 +13,7 @@ public class DBConnection {
 	private String host;
 	private String userName;
 	private String password;
-
-	//private ReadProperties readProperties = new ReadProperties();
+	
 	private Connection connection;
 
 	public DBConnection() {

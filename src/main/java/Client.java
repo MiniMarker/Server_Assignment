@@ -18,7 +18,7 @@ public class Client {
 	 * Creates a client that connects to the server by the host and the portnumber set in the property file to
 	 * communicate with the server.
 	 */
-	private Client() {
+	public Client() {
 		readConfigFile();
 
 		try (Socket socket = new Socket(host, portNumber);
