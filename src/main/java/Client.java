@@ -26,7 +26,7 @@ public class Client {
 		     BufferedReader serverOutput = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 		     BufferedReader clientInput = new BufferedReader(new InputStreamReader(System.in))) {
 
-			System.out.println("Sever connected on: " + host + "/" + portNumber + " at: " + new Date());
+			System.out.println("** Sever connected ** \n - Dato: " + new Date() + "\n - Host: " + host + "/" + portNumber + "\n");
 
 			while(true) {
 

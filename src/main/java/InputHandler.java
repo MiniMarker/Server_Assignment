@@ -7,13 +7,10 @@ import java.util.List;
 
 public class InputHandler {
 
-	private DBConnection dbCon;
 	private String text = "";
 	private String result;
 
 	public InputHandler() {
-		dbCon = new DBConnection();
-		dbCon.connect();
 	}
 
 

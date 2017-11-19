@@ -1,5 +1,4 @@
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
-import com.sun.javaws.exceptions.InvalidArgumentException;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -8,13 +7,10 @@ import java.util.Properties;
 
 public class DBConnection {
 
-	MysqlDataSource ds;
 	private String dbName;
 	private String host;
 	private String userName;
 	private String password;
-	
-	private Connection connection;
 
 	public DBConnection() {
 		readConfigFile();
@@ -22,10 +18,11 @@ public class DBConnection {
 
 	/**
 	 * establishes a new MySqlDataSource bu using the properties of the fields
+	 * @return 
 	 */
 	public Connection connect() {
 		try {
-			ds = new MysqlDataSource();
+			MysqlDataSource ds = new MysqlDataSource();
 			ds.setDatabaseName(dbName);
 			ds.setServerName(host);
 			ds.setUser(userName);

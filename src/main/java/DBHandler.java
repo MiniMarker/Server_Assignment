@@ -5,14 +5,12 @@ import java.sql.*;
 
 public class DBHandler {
 
-	private DBConnection dbCon;
 	private String text;
 	private String result;
 
 
 	public DBHandler() {
-		dbCon = new DBConnection();
-		dbCon.connect();
+
 	}
 
 	/**
@@ -51,25 +49,6 @@ public class DBHandler {
 			System.out.println("SQL ERROR! " + sqle.getMessage());
 		}
 		return text;
-	}
-
-	/**
-	 * This method deletes the intire database... USE WITH CAUTION!!!!!!
-	 * @param connection a MySQLDataSource
-	 * @return a boolean to check if the deletion was successful
-	 */
-	public boolean destroyDatabase(Connection connection){
-
-		try (Connection con = connection;
-		     Statement stmt = con.createStatement()) {
-
-			stmt.executeQuery("DROP SCHEMA " + dbCon.ds.getDatabaseName());
-
-			return true;
-		} catch (SQLException sqle){
-			sqle.getMessage();
-		}
-		return false;
 	}
 
 	/**

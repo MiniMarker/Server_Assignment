@@ -8,6 +8,7 @@ import java.util.Properties;
 public class Server {
 
 	private static int portNumber;
+	ServerSocket serverSocket;
 
 	public static void main(String[] args) {
 		new Server();
@@ -19,10 +20,18 @@ public class Server {
 	 */
 	public Server() {
 		readConfigFile();
+		start();
+	}
 
-		try (ServerSocket serverSocket = new ServerSocket(portNumber)) {
+	public void start(){
+		try {
 
-			System.out.println("Server started on port: " + portNumber + " on: " + new Date());
+			serverSocket = new ServerSocket(portNumber);
+
+			System.out.println("** Server started ** \n - Date: " + new Date() + " \n - Port: " + portNumber);
+
+			System.out.println("\nWaiting for clients to connect...");
+
 
 			while (true){
 				Socket socket = serverSocket.accept();

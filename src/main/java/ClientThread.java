@@ -1,5 +1,7 @@
 import java.io.*;
 import java.net.Socket;
+import java.util.Date;
+import java.util.Scanner;
 
 public class ClientThread implements Runnable {
 
@@ -13,6 +15,7 @@ public class ClientThread implements Runnable {
 	private DBHandler dbHandler;
 	private InputHandler inputHandler;
 	private DBConnection dbCon = new DBConnection();
+	private String username;
 
 	public ClientThread(Socket socket) {
 		threadSocket = socket;
@@ -31,6 +34,13 @@ public class ClientThread implements Runnable {
 			clientInput = new BufferedReader(new InputStreamReader(threadSocket.getInputStream()));
 
 			while (flag) {
+
+				//Set username
+				outputToClient.println("Velg brukernavn:");
+				username = clientInput.readLine();
+				outputToClient.println(" ");
+
+				System.out.println(username + " has connected on: " + new Date());
 
 				startMenu();
 
@@ -70,7 +80,7 @@ public class ClientThread implements Runnable {
 	private void startMenu() {
 
 		outputToClient.println(
-				"Velkommen til serveren! \n" +
+				"Velkommen til serveren " + username + "!\n" +
 				"Skriv inn ønsket valg og avslutt med enter\n\n" +
 				"------------------------------------------------------------------------------------------------- \n" +
 				"1: Koble til og opprett databasen\n" +
@@ -95,6 +105,7 @@ public class ClientThread implements Runnable {
 					outputToClient.print("Serveren kobles fra...");
 					flag = false;
 					outputToClient.println("Vellykket");
+					System.out.println(username + " has disconnected on: " + new Date());
 					break;
 
 				default:
@@ -153,6 +164,7 @@ public class ClientThread implements Runnable {
 					outputToClient.print("Serveren kobles fra...");
 					flag = false;
 					outputToClient.println("Vellykket");
+					System.out.println(username + " has disconnected on: " + new Date());
 					break;
 
 				default:
@@ -201,6 +213,7 @@ public class ClientThread implements Runnable {
 					outputToClient.print("Serveren kobles fra...");
 					flag = false;
 					outputToClient.println("Vellykket");
+					System.out.println(username + " has disconnected");
 					break;
 
 				default:
@@ -262,6 +275,7 @@ public class ClientThread implements Runnable {
 					outputToClient.print("Serveren kobles fra...");
 					flag = false;
 					outputToClient.println("Vellykket");
+					System.out.println(username + " has disconnected");
 					break;
 
 				default:
