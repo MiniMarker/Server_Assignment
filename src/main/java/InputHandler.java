@@ -13,8 +13,6 @@ public class InputHandler {
 	public InputHandler() {
 	}
 
-
-
 	/**
 	 * Add data to Subject table form file
 	 * @return returns numbers of rows created
@@ -71,14 +69,12 @@ public class InputHandler {
 			ResultSet rs = prepSingeSubjectStmt.executeQuery();
 
 			while (rs.next()) {
-				text = (rs.getString(1) + " "
-						+ rs.getString(2) + " "
-						+ rs.getDouble(3) + " "
-						+ rs.getInt(4));
+				text = String.format("Emnekode: %-20s Emnenavn: %-35s Varlighet: %-20.2f Antall påmeldte: %-10d",
+						rs.getString(1), rs.getString(2), rs.getDouble(3),rs.getInt(4));
 			}
 
-			if (text.isEmpty()){
-				text = "Found no subject with code: " + code;
+			if (text == null){
+				return "Kunne ikke finne rad i tabellen med fagkode = " + code;
 			}
 
 		} catch (SQLException sqle) {
@@ -101,11 +97,11 @@ public class InputHandler {
 			StringBuilder stringBuilder = new StringBuilder();
 
 			while (rs.next()) {
-				stringBuilder.append(
-						"Emnekode: " + rs.getString(1) +
-						" Enmenavn: " + rs.getString(2) +
-						" Varighet: " + rs.getDouble(3) +
-						" Antall påmeldte: " + rs.getInt(4) + "\n");
+
+				String text = String.format("Emnekode: %-20s Emnenavn: %-35s Varlighet: %-20.2f Antall påmeldte: %-10d",
+						rs.getString(1), rs.getString(2), rs.getDouble(3),rs.getInt(4));
+
+				stringBuilder.append(text + "\n");
 			}
 
 			result = stringBuilder.toString();
